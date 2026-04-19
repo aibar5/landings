@@ -3,829 +3,916 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Переходи в Activ — сохрани свой номер</title>
+<title>Переход в Activ — сохрани свой номер бесплатно за 1 день</title>
+<meta name="description" content="Перенеси номер любого оператора в Activ бесплатно. МНП за 1 рабочий день. 4G/5G сеть, выгодные тарифы, бонус 3 месяца интернета.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  :root {
-    --red: #E8003C;
-    --red-dark: #B0002D;
-    --red-glow: rgba(232,0,60,0.18);
-    --black: #0A0A0A;
-    --off-black: #111111;
-    --card-bg: #161616;
-    --border: rgba(255,255,255,0.07);
-    --text: #F0F0F0;
-    --muted: rgba(240,240,240,0.5);
-    --font-display: 'Unbounded', sans-serif;
-    --font-body: 'Golos Text', sans-serif;
-  }
+:root {
+  --red: #E8003C;
+  --red-dark: #C00030;
+  --red-light: #FF1A52;
+  --red-glow: rgba(232,0,60,0.22);
+  --red-subtle: rgba(232,0,60,0.08);
+  --bg: #080808;
+  --bg2: #0f0f0f;
+  --bg3: #141414;
+  --bg4: #1a1a1a;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #F2F2F2;
+  --text2: rgba(242,242,242,0.62);
+  --text3: rgba(242,242,242,0.38);
+  --green: #00C853;
+  --fd: 'Raleway', sans-serif;
+  --fb: 'Mulish', sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+/* URGENCY TICKER */
+.ticker {
+  background: var(--red);
+  padding: 9px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 200;
+}
+.ticker-inner {
+  display: flex;
+  gap: 48px;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.ticker-inner span {
+  font-family: var(--fd);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ticker-inner span::before { content: '★'; font-size: 10px; }
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* ── NOISE TEXTURE ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 68px;
+  background: rgba(8,8,8,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -1px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.logo-dot { color: var(--red); font-size: 28px; line-height: 1; margin-top: -2px; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-phone { font-size: 14px; font-weight: 600; color: var(--text2); text-decoration: none; transition: color 0.2s; }
+.nav-phone:hover { color: #fff; }
+.nav-cta {
+  background: var(--red);
+  color: #fff;
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.18s, transform 0.15s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--red-light); transform: translateY(-1px); }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
+/* HERO */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 68px - 38px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 80px 80px 80px 80px;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hero-glow {
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(232,0,60,0.14) 0%, transparent 70%);
+  top: -200px; right: -100px;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.hero-glow2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(232,0,60,0.06) 0%, transparent 70%);
+  bottom: -100px; left: -50px;
+  pointer-events: none;
+  border-radius: 50%;
+}
+.hero-left { position: relative; z-index: 2; }
 
-  .logo {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    color: #fff;
-    text-decoration: none;
-  }
-  .logo span { color: var(--red); }
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,200,83,0.1);
+  border: 1px solid rgba(0,200,83,0.25);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 0.3px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s ease both;
+}
+.trust-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+  flex-shrink: 0;
+}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,200,83,0.4)}50%{opacity:0.5;box-shadow:0 0 0 4px rgba(0,200,83,0)}}
 
-  .nav-cta {
-    background: var(--red);
-    color: #fff;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 14px;
-    padding: 10px 24px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .nav-cta:hover { background: var(--red-dark); transform: scale(1.03); }
+.hero h1 {
+  font-family: var(--fd);
+  font-size: clamp(38px, 4.5vw, 66px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero h1 .strike { position: relative; color: var(--text3); }
+.hero h1 .strike::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%; height: 3px;
+  background: var(--red);
+  transform: rotate(-2deg);
+}
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
-    overflow: hidden;
-  }
+.hero-desc {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--text2);
+  max-width: 460px;
+  margin-bottom: 36px;
+  line-height: 1.7;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
 
-  .hero-bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-  }
-  .hero-bg-circle.c1 {
-    width: 600px; height: 600px;
-    background: var(--red-glow);
-    top: -120px; left: 50%;
-    transform: translateX(-50%);
-    animation: pulse 6s ease-in-out infinite;
-  }
-  .hero-bg-circle.c2 {
-    width: 300px; height: 300px;
-    background: rgba(232,0,60,0.08);
-    bottom: 40px; right: -60px;
-    animation: pulse 8s ease-in-out infinite 2s;
-  }
+.hero-form { animation: fadeUp 0.6s ease 0.3s both; margin-bottom: 24px; }
+.form-row {
+  display: flex;
+  gap: 10px;
+  max-width: 460px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border2);
+  border-radius: 12px;
+  padding: 6px 6px 6px 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-row:focus-within {
+  border-color: rgba(232,0,60,0.5);
+  box-shadow: 0 0 0 4px rgba(232,0,60,0.08);
+}
+.phone-field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 0;
+  min-width: 0;
+}
+.phone-field::placeholder { color: var(--text3); }
+.submit-btn {
+  background: var(--red);
+  color: #fff;
+  font-family: var(--fd);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s, transform 0.12s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+.submit-btn:hover { background: var(--red-light); transform: scale(1.03); box-shadow: 0 6px 24px rgba(232,0,60,0.35); }
+.submit-btn:active { transform: scale(0.98); }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
-  }
-  .c2 { animation-name: pulse2 !important; }
-  @keyframes pulse2 {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.1); }
-  }
+.form-micro {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 12px;
+  max-width: 460px;
+  flex-wrap: wrap;
+}
+.form-micro-item { display: flex; align-items: center; gap: 5px; }
+.form-micro svg { flex-shrink: 0; }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(232,0,60,0.12);
-    border: 1px solid rgba(232,0,60,0.35);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #ff6685;
-    margin-bottom: 32px;
-    animation: fadeUp 0.7s ease both;
-  }
-  .hero-badge .dot {
-    width: 7px; height: 7px;
-    background: var(--red);
-    border-radius: 50%;
-    animation: blink 1.5s infinite;
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; } 50% { opacity: 0.2; }
-  }
+.hero-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+.avatars { display: flex; align-items: center; }
+.av {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  margin-left: -8px;
+  background: var(--bg4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  font-family: var(--fd);
+}
+.av:first-child { margin-left: 0; }
+.av.a1{background:#3a1a24}.av.a2{background:#1a2a3a}.av.a3{background:#1a3a2a}.av.a4{background:#2a2a3a}
+.hs-count { font-size: 13px; font-weight: 600; color: var(--text); }
+.hs-stars { color: #FFC107; font-size: 12px; letter-spacing: -1px; }
 
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(36px, 7vw, 86px);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    max-width: 900px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.7s ease 0.15s both;
-  }
-  .hero h1 .accent { color: var(--red); }
+/* HERO RIGHT */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.comparison-card {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 28px;
+  width: 340px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  position: relative;
+}
+.cc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.cc-title { font-family: var(--fd); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); }
+.cc-tag { background: rgba(0,200,83,0.12); color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(0,200,83,0.2); }
+.cc-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.cc-row:last-child { border-bottom: none; }
+.cc-param { font-size: 13px; color: var(--text2); }
+.cc-vals { display: flex; gap: 24px; }
+.cc-old { font-size: 13px; color: var(--text3); text-decoration: line-through; min-width: 60px; text-align: right; }
+.cc-new { font-size: 13px; font-weight: 700; color: var(--green); min-width: 60px; text-align: right; }
+.cc-footer { margin-top: 20px; background: rgba(232,0,60,0.08); border: 1px solid rgba(232,0,60,0.2); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+.cc-bonus-icon { width: 36px; height: 36px; background: var(--red); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cc-bonus-text { font-size: 12px; color: var(--text2); line-height: 1.4; }
+.cc-bonus-text strong { color: #fff; font-weight: 700; }
 
-  .hero p {
-    font-size: clamp(15px, 2vw, 19px);
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 48px;
-    animation: fadeUp 0.7s ease 0.3s both;
-  }
+.float-pill {
+  position: absolute;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  animation: floatPill 3s ease-in-out infinite;
+}
+.float-pill.p1 { top: -24px; right: -16px; animation-delay: 0s; }
+.float-pill.p2 { bottom: -20px; left: -16px; animation-delay: 1.5s; }
+@keyframes floatPill { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.fp-icon { font-size: 18px; }
+.fp-text { font-weight: 600; color: var(--text); }
+.fp-sub { color: var(--text3); font-size: 11px; }
 
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.7s ease 0.45s both;
-  }
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
-  .btn-primary {
-    background: var(--red);
-    color: #fff;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 16px;
-    padding: 16px 40px;
-    border-radius: 100px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 0 0 0 var(--red-glow);
-  }
-  .btn-primary:hover {
-    background: var(--red-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px var(--red-glow);
-  }
+/* SOCIAL PROOF BAR */
+.proof-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  z-index: 1;
+}
+.proof-item { text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
+.proof-item:last-child { border-right: none; }
+.proof-num { font-family: var(--fd); font-size: 38px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 4px; letter-spacing: -1px; }
+.proof-num .unit { font-size: 22px; color: var(--red); }
+.proof-label { font-size: 13px; color: var(--text3); font-weight: 500; }
 
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 16px;
-    padding: 15px 36px;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-ghost:hover {
-    border-color: rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.04);
-  }
+/* OPERATOR LOGOS */
+.operators-section { padding: 56px 80px; max-width: 1400px; margin: 0 auto; text-align: center; }
+.op-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text3); margin-bottom: 28px; }
+.op-logos { display: flex; justify-content: center; align-items: center; gap: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.op-logo { flex: 1; padding: 20px 32px; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+.op-logo:last-child { border-right: none; }
+.op-logo:hover { background: var(--bg3); }
+.op-name { font-family: var(--fd); font-weight: 800; font-size: 16px; color: var(--text3); }
+.op-arrow { font-size: 18px; color: var(--red); font-weight: 700; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* SECTIONS */
+.section-wrap { padding: 96px 80px; max-width: 1400px; margin: 0 auto; }
+.section-head { margin-bottom: 56px; }
+.chip { display: inline-block; background: rgba(232,0,60,0.1); border: 1px solid rgba(232,0,60,0.2); border-radius: 6px; padding: 5px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 16px; }
+h2 { font-family: var(--fd); font-size: clamp(30px, 3.5vw, 52px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; }
+.sub { font-size: 17px; color: var(--text2); margin-top: 12px; max-width: 500px; }
 
-  /* ── PHONE VISUAL ── */
-  .hero-phone {
-    margin-top: 72px;
-    position: relative;
-    animation: fadeUp 0.9s ease 0.6s both;
-  }
-  .phone-frame {
-    width: 220px;
-    height: 420px;
-    background: var(--card-bg);
-    border-radius: 36px;
-    border: 2px solid rgba(255,255,255,0.1);
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
-  }
-  .phone-screen {
-    position: absolute;
-    inset: 8px;
-    background: linear-gradient(160deg, #1a0008 0%, #0A0A0A 50%);
-    border-radius: 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .phone-logo {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 28px;
-    color: #fff;
-  }
-  .phone-logo span { color: var(--red); }
-  .phone-number {
-    font-family: var(--font-body);
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 2px;
-  }
-  .phone-tag {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
-  .phone-check {
-    width: 40px; height: 40px;
-    background: rgba(232,0,60,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 8px;
-  }
-  .phone-check svg { width: 20px; height: 20px; }
-  .phone-notch {
-    position: absolute;
-    top: 16px; left: 50%;
-    transform: translateX(-50%);
-    width: 60px; height: 6px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 4px;
-  }
+/* STEPS */
+.steps-timeline { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; gap: 32px; }
+.steps-timeline::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, var(--red), var(--red), transparent); opacity: 0.3; pointer-events: none; }
+.step { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; position: relative; transition: border-color 0.25s, transform 0.25s, background 0.25s; }
+.step:hover { border-color: rgba(232,0,60,0.35); background: var(--bg3); transform: translateY(-6px); }
+.step-num { position: absolute; top: -16px; left: 28px; background: var(--red); color: #fff; font-family: var(--fd); font-weight: 900; font-size: 13px; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; letter-spacing: -0.5px; }
+.step-time { display: inline-block; background: rgba(0,200,83,0.1); border: 1px solid rgba(0,200,83,0.2); color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 16px; }
+.step h3 { font-family: var(--fd); font-size: 18px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px; }
+.step p { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.step-detail { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text3); }
 
-  .arrow-down {
-    position: absolute;
-    bottom: -48px; left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 48px;
-    background: linear-gradient(to bottom, var(--red), transparent);
-  }
+/* TARIFFS */
+.tariffs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tariff-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; position: relative; transition: border-color 0.25s, transform 0.25s; }
+.tariff-card:hover { border-color: rgba(232,0,60,0.3); transform: translateY(-4px); }
+.tariff-card.featured { border-color: rgba(232,0,60,0.45); background: linear-gradient(145deg, rgba(232,0,60,0.07) 0%, var(--bg2) 60%); }
+.tariff-pop { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; font-family: var(--fd); font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 16px; border-radius: 6px; white-space: nowrap; }
+.tariff-name { font-family: var(--fd); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 12px; }
+.tariff-price { font-family: var(--fd); font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: -2px; color: #fff; margin-bottom: 4px; }
+.tariff-price .curr { font-size: 22px; vertical-align: super; letter-spacing: 0; }
+.tariff-price .per { font-size: 14px; font-weight: 500; color: var(--text3); letter-spacing: 0; }
+.tariff-old { font-size: 14px; color: var(--text3); text-decoration: line-through; margin-bottom: 20px; }
+.tariff-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.tariff-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text2); }
+.tf-check { width: 18px; height: 18px; border-radius: 5px; background: rgba(0,200,83,0.12); border: 1px solid rgba(0,200,83,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tariff-cta { display: block; text-align: center; padding: 14px; border-radius: 10px; font-family: var(--fd); font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+.tariff-cta.primary { background: var(--red); color: #fff; }
+.tariff-cta.primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,0,60,0.3); }
+.tariff-cta.secondary { background: var(--bg4); color: var(--text); border: 1px solid var(--border2); }
+.tariff-cta.secondary:hover { background: var(--bg3); }
 
-  /* ── STATS BAR ── */
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--off-black);
-    position: relative;
-    z-index: 1;
-    flex-wrap: wrap;
-  }
-  .stat {
-    flex: 1;
-    min-width: 160px;
-    padding: 36px 24px;
-    text-align: center;
-    border-right: 1px solid var(--border);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 36px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .stat-num span { color: var(--red); }
-  .stat-label {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 500;
-  }
+/* REVIEWS */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 28px; }
+.review-stars { color: #FFC107; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+.review-text { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.rev-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0; }
+.rev-name { font-weight: 600; font-size: 14px; }
+.rev-from { font-size: 12px; color: var(--text3); }
 
-  /* ── SECTION ── */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 100px 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+/* TRUST ROW */
+.trust-row { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 48px 80px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text3); }
+.trust-icon { width: 32px; height: 32px; background: var(--bg4); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 1px solid var(--border); }
 
-  .section-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--red);
-    margin-bottom: 16px;
-  }
+/* FAQ */
+.faq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item:hover { border-color: var(--border2); }
+.faq-item.open { border-color: rgba(232,0,60,0.2); }
+.faq-q { width: 100%; background: none; border: none; color: var(--text); font-family: var(--fb); font-size: 15px; font-weight: 600; padding: 20px 24px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; line-height: 1.4; }
+.faq-ico { width: 24px; height: 24px; border-radius: 6px; background: var(--bg4); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-size: 14px; color: var(--text3); }
+.faq-item.open .faq-ico { background: rgba(232,0,60,0.15); border-color: rgba(232,0,60,0.3); color: var(--red); transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; font-size: 14px; color: var(--text2); line-height: 1.7; padding: 0 24px; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
 
-  h2 {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
-  }
+/* FINAL CTA */
+.final-cta { padding: 0 80px 100px; max-width: 1400px; margin: 0 auto; }
+.final-cta-inner { background: var(--bg2); border: 1px solid rgba(232,0,60,0.25); border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+.final-cta-left { padding: 64px; position: relative; z-index: 1; }
+.final-cta-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 0% 50%, rgba(232,0,60,0.1) 0%, transparent 60%); pointer-events: none; }
+.final-cta-left h2 { margin-bottom: 16px; }
+.final-cta-left .sub { margin-bottom: 36px; }
+.big-form { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+.big-input { background: var(--bg4); border: 1.5px solid var(--border2); border-radius: 12px; color: #fff; font-family: var(--fb); font-size: 16px; padding: 16px 20px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+.big-input::placeholder { color: var(--text3); }
+.big-input:focus { border-color: rgba(232,0,60,0.5); box-shadow: 0 0 0 4px rgba(232,0,60,0.07); }
+.big-btn { background: var(--red); color: #fff; font-family: var(--fd); font-weight: 800; font-size: 16px; letter-spacing: 0.3px; padding: 18px; border-radius: 12px; border: none; cursor: pointer; transition: background 0.18s, transform 0.12s, box-shadow 0.2s; width: 100%; }
+.big-btn:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,0,60,0.35); }
+.big-btn:active { transform: translateY(0); }
+.cta-consent { font-size: 12px; color: var(--text3); line-height: 1.5; margin-top: 4px; }
+.cta-consent a { color: var(--text3); }
+.cta-consent a:hover { color: var(--red); }
+.final-cta-right { background: var(--bg3); border-left: 1px solid var(--border); padding: 64px; display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+.cta-feature { display: flex; gap: 16px; align-items: flex-start; }
+.cf-icon { width: 40px; height: 40px; background: rgba(232,0,60,0.1); border: 1px solid rgba(232,0,60,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cf-text h4 { font-family: var(--fd); font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.cf-text p { font-size: 13px; color: var(--text2); line-height: 1.5; }
 
-  .sub {
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 480px;
-    margin-bottom: 64px;
-  }
+/* FOOTER */
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; position: relative; z-index: 1; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
 
-  /* ── STEPS ── */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    counter-reset: step;
-  }
+/* STICKY MOBILE CTA */
+.sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: rgba(8,8,8,0.95); border-top: 1px solid var(--border); padding: 14px 20px; backdrop-filter: blur(16px); }
+.sticky-cta a { display: block; text-align: center; background: var(--red); color: #fff; font-family: var(--fd); font-weight: 800; font-size: 15px; padding: 16px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
 
-  .step-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
-  }
-  .step-card:hover {
-    border-color: rgba(232,0,60,0.3);
-    transform: translateY(-4px);
-  }
-  .step-card::before {
-    counter-increment: step;
-    content: "0" counter(step);
-    font-family: var(--font-display);
-    font-size: 64px;
-    font-weight: 900;
-    color: rgba(232,0,60,0.07);
-    position: absolute;
-    top: -8px;
-    right: 16px;
-    line-height: 1;
-    pointer-events: none;
-  }
-  .step-icon {
-    width: 44px; height: 44px;
-    background: rgba(232,0,60,0.12);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-  .step-card h3 {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-  .step-card p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 
-  /* ── BENEFITS ── */
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-  .benefit {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-  .benefit:hover { border-color: rgba(232,0,60,0.25); }
-  .benefit-icon {
-    font-size: 28px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .benefit h3 {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .benefit p { font-size: 14px; color: var(--muted); }
+/* SUCCESS */
+.success-msg { display: none; text-align: center; padding: 24px; }
+.success-msg.show { display: block; }
+.success-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.success-msg h3 { font-family: var(--fd); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.success-msg p { font-size: 14px; color: var(--text2); }
 
-  /* ── FAQ ── */
-  .faq-list { display: flex; flex-direction: column; gap: 12px; }
-  .faq-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 500;
-    padding: 22px 28px;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
-  .faq-q:hover { color: #fff; }
-  .faq-icon {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 16px;
-    transition: transform 0.25s, background 0.2s;
-  }
-  .faq-item.open .faq-icon {
-    transform: rotate(45deg);
-    background: rgba(232,0,60,0.2);
-    color: var(--red);
-  }
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-    font-size: 15px;
-    color: var(--muted);
-    padding: 0 28px;
-  }
-  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 22px; }
-
-  /* ── CTA SECTION ── */
-  .cta-section {
-    text-align: center;
-    padding: 80px 24px 100px;
-    position: relative;
-    z-index: 1;
-  }
-  .cta-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    background: var(--card-bg);
-    border: 1px solid rgba(232,0,60,0.2);
-    border-radius: 32px;
-    padding: 64px 48px;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-inner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(232,0,60,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cta-inner h2 { margin-bottom: 16px; }
-  .cta-inner .sub { margin: 0 auto 40px; }
-
-  /* ── FORM ── */
-  .mnp-form {
-    display: flex;
-    gap: 12px;
-    max-width: 440px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .mnp-input {
-    flex: 1;
-    min-width: 180px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: #fff;
-    font-family: var(--font-body);
-    font-size: 16px;
-    padding: 14px 24px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .mnp-input::placeholder { color: rgba(255,255,255,0.3); }
-  .mnp-input:focus { border-color: rgba(232,0,60,0.5); }
-
-  .form-hint {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 14px;
-    text-align: center;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    color: var(--muted);
-    flex-wrap: wrap;
-    gap: 16px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── SCROLL REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .hero h1 { letter-spacing: -1px; }
-    .stat { min-width: 140px; padding: 28px 16px; }
-    .stat-num { font-size: 28px; }
-    section { padding: 64px 20px; }
-    .cta-inner { padding: 40px 24px; }
-    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
-  }
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; gap: 64px; padding: 60px 40px; text-align: center; }
+  .hero-right { justify-content: center; }
+  .hero-desc { max-width: 100%; }
+  .form-row { max-width: 100%; }
+  .hero-social { justify-content: center; }
+  .proof-bar { padding: 28px 40px; }
+  .tariffs-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .final-cta-inner { grid-template-columns: 1fr; }
+  .final-cta-right { border-left: none; border-top: 1px solid var(--border); }
+  .faq-cols { grid-template-columns: 1fr; }
+  .operators-section, .section-wrap, .final-cta { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-phone { display: none; }
+  .hero { padding: 48px 20px; }
+  .proof-bar { grid-template-columns: repeat(2,1fr); padding: 20px; }
+  .proof-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .proof-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .proof-item:last-child, .proof-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .steps-timeline { grid-template-columns: 1fr; }
+  .steps-timeline::before { display: none; }
+  .tariffs-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .op-logos { flex-direction: column; }
+  .op-logo { border-right: none; border-bottom: 1px solid var(--border); }
+  .op-logo:last-child { border-bottom: none; }
+  .final-cta-left, .final-cta-right { padding: 32px 24px; }
+  .operators-section, .section-wrap, .final-cta { padding-left: 20px; padding-right: 20px; }
+  .trust-row { padding: 32px 20px; gap: 24px; }
+  footer { padding: 32px 20px; flex-direction: column; align-items: center; text-align: center; }
+  .sticky-cta { display: block; }
+  body { padding-bottom: 80px; }
+  .comparison-card { width: 300px; }
+}
 </style>
 </head>
 <body>
 
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Бесплатный перенос номера</span>
+    <span>3 месяца интернета в подарок</span>
+    <span>Перенос за 1 рабочий день</span>
+    <span>Без скрытых платежей</span>
+    <span>Лучшая сеть в Казахстане</span>
+    <span>0 тенге за МНП</span>
+    <span>Бесплатный перенос номера</span>
+    <span>3 месяца интернета в подарок</span>
+    <span>Перенос за 1 рабочий день</span>
+    <span>Без скрытых платежей</span>
+    <span>Лучшая сеть в Казахстане</span>
+    <span>0 тенге за МНП</span>
+  </div>
+</div>
+
 <nav>
-  <a class="logo" href="#">activ<span>.</span></a>
-  <a class="nav-cta" href="#mnp-form">Перейти сейчас</a>
+  <a class="logo" href="#">activ<span class="logo-dot">.</span></a>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+77470000000">8 747 000 00 00</a>
+    <a class="nav-cta" href="#final-form">Перенести номер →</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg-circle c1"></div>
-  <div class="hero-bg-circle c2"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
 
-  <div class="hero-badge">
-    <div class="dot"></div>
-    Сохрани свой номер при переходе
-  </div>
+  <div class="hero-left">
+    <div class="trust-badge">
+      <div class="trust-dot"></div>
+      Более 47 000 переносов за этот месяц
+    </div>
+    <h1>Твой номер.<br>Наша <em>сеть.</em><br><span class="strike">Их цены.</span></h1>
+    <p class="hero-desc">Перейди в Activ и сохрани свой номер — бесплатно, за&nbsp;1&nbsp;день. Подключи тариф с&nbsp;4G/5G покрытием и&nbsp;получи 3&nbsp;месяца интернета в&nbsp;подарок.</p>
 
-  <h1>Переходи&nbsp;в&nbsp;<span class="accent">Activ</span><br>со&nbsp;своим&nbsp;номером</h1>
-  <p>Никаких новых номеров. Просто лучший тариф, лучшее покрытие и перенос занимает 1 день.</p>
-
-  <div class="hero-actions">
-    <a href="#mnp-form" class="btn-primary">Перенести номер</a>
-    <a href="#how" class="btn-ghost">Как это работает</a>
-  </div>
-
-  <div class="hero-phone">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="phone-logo">activ<span>.</span></div>
-        <div class="phone-number">+7 7XX XXX XXXX</div>
-        <div class="phone-tag">Ваш номер сохранён</div>
-        <div class="phone-check">
-          <svg viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="11" stroke="#E8003C" stroke-width="1.5"/>
-            <path d="M7 12.5l3.5 3.5 6.5-7" stroke="#E8003C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="hero-form">
+      <form class="form-row" onsubmit="handleHeroForm(event)">
+        <input class="phone-field" type="tel" placeholder="+7 700 000 00 00" id="hero-phone" autocomplete="tel">
+        <button class="submit-btn" type="submit">Получить звонок</button>
+      </form>
+      <div class="form-micro">
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00C853" stroke-width="2" stroke-linejoin="round"/></svg>
+          Данные защищены
+        </div>
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="rgba(242,242,242,0.38)" stroke-width="2"/><path d="M12 6v6l4 2" stroke="rgba(242,242,242,0.38)" stroke-width="2" stroke-linecap="round"/></svg>
+          Перезвоним за 5 минут
+        </div>
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="rgba(242,242,242,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Без навязывания
         </div>
       </div>
     </div>
-    <div class="arrow-down"></div>
+
+    <div class="hero-social">
+      <div class="avatars">
+        <div class="av a1">АС</div>
+        <div class="av a2">МК</div>
+        <div class="av a3">ДА</div>
+        <div class="av a4">+</div>
+      </div>
+      <div>
+        <div><span class="hs-count">18+ млн человек</span> уже с нами</div>
+        <div class="hs-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="float-pill p1">
+      <div class="fp-icon">⚡</div>
+      <div>
+        <div class="fp-text">Активировано</div>
+        <div class="fp-sub">5G подключение</div>
+      </div>
+    </div>
+    <div class="comparison-card">
+      <div class="cc-header">
+        <div class="cc-title">Сравнение тарифов</div>
+        <div class="cc-tag">Activ выгоднее</div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Интернет</div>
+        <div class="cc-vals"><div class="cc-old">20 ГБ</div><div class="cc-new">50 ГБ</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Минуты</div>
+        <div class="cc-vals"><div class="cc-old">300 мин</div><div class="cc-new">Безлим</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Цена/мес</div>
+        <div class="cc-vals"><div class="cc-old">4 990 ₸</div><div class="cc-new">3 490 ₸</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Покрытие</div>
+        <div class="cc-vals"><div class="cc-old">4G</div><div class="cc-new">5G</div></div>
+      </div>
+      <div class="cc-footer">
+        <div class="cc-bonus-icon">🎁</div>
+        <div class="cc-bonus-text"><strong>+3 месяца интернета бесплатно</strong><br>при переносе до 31 декабря</div>
+      </div>
+    </div>
+    <div class="float-pill p2">
+      <div class="fp-icon">✅</div>
+      <div>
+        <div class="fp-text">Алматы, Нур-Султан</div>
+        <div class="fp-sub">5G покрытие активно</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-num">18<span>млн</span></div>
-    <div class="stat-label">абонентов в Казахстане</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">1<span> день</span></div>
-    <div class="stat-label">срок переноса номера</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">0<span>₸</span></div>
-    <div class="stat-label">стоимость переноса</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">4<span>G/5G</span></div>
-    <div class="stat-label">широкое покрытие сети</div>
+<div class="proof-bar">
+  <div class="proof-item"><div class="proof-num">18<span class="unit">млн</span></div><div class="proof-label">абонентов в Казахстане</div></div>
+  <div class="proof-item"><div class="proof-num">1<span class="unit"> день</span></div><div class="proof-label">срок переноса номера</div></div>
+  <div class="proof-item"><div class="proof-num">0<span class="unit">₸</span></div><div class="proof-label">стоимость переноса</div></div>
+  <div class="proof-item"><div class="proof-num">98<span class="unit">%</span></div><div class="proof-label">довольных клиентов</div></div>
+</div>
+
+<div class="operators-section reveal">
+  <div class="op-label">Перенесём номер с любого оператора</div>
+  <div class="op-logos">
+    <div class="op-logo"><div class="op-name">Kcell</div><div class="op-arrow">→</div><div style="font-family:var(--fd);font-weight:900;font-size:16px;color:var(--red)">activ</div></div>
+    <div class="op-logo"><div class="op-name">Beeline</div><div class="op-arrow">→</div><div style="font-family:var(--fd);font-weight:900;font-size:16px;color:var(--red)">activ</div></div>
+    <div class="op-logo"><div class="op-name">Tele2</div><div class="op-arrow">→</div><div style="font-family:var(--fd);font-weight:900;font-size:16px;color:var(--red)">activ</div></div>
+    <div class="op-logo"><div class="op-name">Altel</div><div class="op-arrow">→</div><div style="font-family:var(--fd);font-weight:900;font-size:16px;color:var(--red)">activ</div></div>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <span class="section-label">Как это работает</span>
-  <h2>Три простых шага</h2>
-  <p class="sub">Весь процесс занимает не больше 15 минут. Ваш номер переносится за 1 рабочий день.</p>
-
-  <div class="steps reveal">
-    <div class="step-card">
-      <div class="step-icon">📱</div>
-      <h3>Оставьте заявку</h3>
-      <p>Заполните форму онлайн или обратитесь в ближайший офис Activ. Понадобится только удостоверение личности.</p>
+<div class="section-wrap" id="how">
+  <div class="section-head reveal">
+    <div class="chip">Как это работает</div>
+    <h2>Три шага и&nbsp;готово</h2>
+    <p class="sub">Весь процесс занимает 15 минут вашего времени. Перенос происходит автоматически за 1 рабочий день.</p>
+  </div>
+  <div class="steps-timeline">
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <div class="step-time">5 минут</div>
+      <h3>Оставьте заявку онлайн</h3>
+      <p>Введите номер телефона — мы перезвоним в течение 5 минут и ответим на все вопросы. Или посетите ближайший офис Activ.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> Нужен только удостоверение личности</div>
     </div>
-    <div class="step-card">
-      <div class="step-icon">📄</div>
-      <h3>Подпишите договор</h3>
-      <p>Подключите тариф Activ и подпишите договор на перенос номера. Никаких скрытых условий.</p>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <div class="step-time">10 минут</div>
+      <h3>Выберите тариф и подпишите</h3>
+      <p>Подберём оптимальный тариф под ваши потребности. Подпишете договор — цифровая подпись доступна онлайн.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> Без скрытых условий</div>
     </div>
-    <div class="step-card">
-      <div class="step-icon">✅</div>
-      <h3>Пользуйтесь</h3>
-      <p>Уже через 1 рабочий день ваш номер будет активен в сети Activ. Контакты ничего менять не нужно.</p>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <div class="step-time">1 рабочий день</div>
+      <h3>Пользуйтесь сетью Activ</h3>
+      <p>Ваш номер перейдёт в сеть Activ на следующий рабочий день. Перенос займёт около 30 минут ночью — вы ничего не пропустите.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> SMS уведомление о завершении</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- BENEFITS -->
-<section id="benefits">
-  <span class="section-label">Почему Activ</span>
-  <h2>Выберите лучшее</h2>
-  <p class="sub">Переход к нам — это не просто смена оператора. Это переход на новый уровень связи.</p>
+<div class="section-wrap" id="tariffs">
+  <div class="section-head reveal">
+    <div class="chip">Тарифы</div>
+    <h2>Выбери свой план</h2>
+    <p class="sub">Все тарифы включают бесплатный перенос номера и 3 месяца интернета в подарок.</p>
+  </div>
+  <div class="tariffs-grid reveal">
+    <div class="tariff-card">
+      <div class="tariff-name">Старт</div>
+      <div class="tariff-price"><span class="curr">₸</span>1 990<span class="per">/мес</span></div>
+      <div class="tariff-old">было 2 990 ₸</div>
+      <ul class="tariff-features">
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>20 ГБ интернета</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>300 минут звонков</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>100 SMS</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>4G покрытие</li>
+      </ul>
+      <a href="#final-form" class="tariff-cta secondary">Выбрать тариф</a>
+    </div>
+    <div class="tariff-card featured">
+      <div class="tariff-pop">★ Хит продаж</div>
+      <div class="tariff-name">Оптимальный</div>
+      <div class="tariff-price"><span class="curr">₸</span>3 490<span class="per">/мес</span></div>
+      <div class="tariff-old">было 4 990 ₸</div>
+      <ul class="tariff-features">
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>50 ГБ интернета</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитные звонки</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитные SMS</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>5G покрытие</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Роуминг СНГ включён</li>
+      </ul>
+      <a href="#final-form" class="tariff-cta primary">Выбрать тариф →</a>
+    </div>
+    <div class="tariff-card">
+      <div class="tariff-name">Максимум</div>
+      <div class="tariff-price"><span class="curr">₸</span>5 990<span class="per">/мес</span></div>
+      <div class="tariff-old">было 7 990 ₸</div>
+      <ul class="tariff-features">
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитный интернет</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитные звонки</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитные SMS</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>5G приоритет</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Роуминг мировой</li>
+      </ul>
+      <a href="#final-form" class="tariff-cta secondary">Выбрать тариф</a>
+    </div>
+  </div>
+</div>
 
-  <div class="benefits-grid reveal">
-    <div class="benefit">
-      <div class="benefit-icon">🚀</div>
-      <div>
-        <h3>Быстрый интернет</h3>
-        <p>4G/5G сеть с максимальным покрытием по всему Казахстану. Скорость до 1 Гбит/с.</p>
+<div class="section-wrap" id="reviews">
+  <div class="section-head reveal">
+    <div class="chip">Отзывы клиентов</div>
+    <h2>Они уже перешли</h2>
+    <p class="sub">Реальные отзывы от людей, которые перенесли номер из других операторов.</p>
+  </div>
+  <div class="reviews-grid reveal">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Перешёл с Kcell. Скептически относился, думал будут проблемы. Но всё прошло за один день, номер сохранился, интернет стал заметно быстрее. Рекомендую.»</p>
+      <div class="review-author"><div class="rev-av" style="background:#2a1a30">АС</div><div><div class="rev-name">Асет Сейткали</div><div class="rev-from">Перешёл с Kcell · Алматы</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Поначалу не верила, что всё так просто. Менеджер помог с выбором тарифа, объяснил каждый шаг. Перенос прошёл ночью — утром уже пользовалась новой сетью.»</p>
+      <div class="review-author"><div class="rev-av" style="background:#1a2a30">ДМ</div><div><div class="rev-name">Динара Мусина</div><div class="rev-from">Перешла с Beeline · Нур-Султан</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Долго откладывал из-за боязни потерять номер, который дал всем. Всё прошло гладко, 3 месяца интернета в подарок — неожиданно приятный бонус.»</p>
+      <div class="review-author"><div class="rev-av" style="background:#1a2a1a">БЖ</div><div><div class="rev-name">Болат Жаксыбеков</div><div class="rev-from">Перешёл с Tele2 · Шымкент</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust-row reveal">
+  <div class="trust-item"><div class="trust-icon">🏆</div>Лучший оператор 2024 по версии GSMA</div>
+  <div class="trust-item"><div class="trust-icon">🛡️</div>Лицензия МЦРИАП РК</div>
+  <div class="trust-item"><div class="trust-icon">🏅</div>№1 по покрытию 5G</div>
+  <div class="trust-item"><div class="trust-icon">⭐</div>4.8/5 в App Store и Google Play</div>
+  <div class="trust-item"><div class="trust-icon">🔒</div>Данные защищены по GDPR</div>
+</div>
+
+<div class="section-wrap" id="faq">
+  <div class="section-head reveal">
+    <div class="chip">Вопросы и ответы</div>
+    <h2>Всё, что нужно знать</h2>
+  </div>
+  <div class="faq-cols reveal">
+    <div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Сохранится ли мой номер при переходе? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Да. МНП (мобильная переносимость номера) — это законодательно закреплённое право. Ваш номер переходит вместе с вами, меняется только оператор. Все контакты, мессенджеры и банковские привязки остаются.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Нужно ли расторгать договор с текущим оператором? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Нет. При подаче заявки на МНП договор с предыдущим оператором расторгается автоматически. Вам не нужно ничего делать самостоятельно.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Сколько стоит перенос номера? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Перенос номера абсолютно бесплатный. Вы платите только за выбранный тариф. Никаких комиссий за МНП нет.</div>
       </div>
     </div>
-    <div class="benefit">
-      <div class="benefit-icon">💰</div>
-      <div>
-        <h3>Выгодные тарифы</h3>
-        <p>Пакеты минут, SMS и интернета по лучшим ценам. Без скрытых платежей.</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Буду ли я доступен во время переноса? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Перенос занимает около 30 минут и происходит в ночное время (обычно с 2:00 до 5:00). В это время номер может быть временно недоступен. Вы получите SMS заранее.</div>
       </div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">🔒</div>
-      <div>
-        <h3>Ваш номер — ваш</h3>
-        <p>МНП гарантирует сохранение номера. Меняется только оператор, номер остаётся прежним.</p>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Какие условия для переноса номера? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Необходимо быть физическим лицом с казахстанским номером, без задолженности перед текущим оператором. Номер должен быть активным не менее 3 месяцев.</div>
       </div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">🛡️</div>
-      <div>
-        <h3>Поддержка 24/7</h3>
-        <p>Персональный менеджер поможет с переносом. Служба поддержки доступна круглосуточно.</p>
-      </div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">🎁</div>
-      <div>
-        <h3>Бонус при переходе</h3>
-        <p>Получите 3 месяца бесплатного интернета при переносе номера до 31 декабря 2025.</p>
-      </div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">📍</div>
-      <div>
-        <h3>2000+ офисов</h3>
-        <p>Широкая сеть офисов и партнёрских точек продаж по всему Казахстану.</p>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Что делать, если возникнут проблемы? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Служба поддержки работает 24/7 по номеру 8 747 000 00 00. Персональный менеджер будет на связи на всех этапах переноса.</div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FAQ -->
-<section id="faq">
-  <span class="section-label">Вопросы и ответы</span>
-  <h2>Часто спрашивают</h2>
-  <p class="sub">Если не нашли ответ — напишите нам.</p>
-
-  <div class="faq-list reveal">
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Сохранится ли мой номер при переходе?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Да, именно это и называется МНП — мобильная переносимость номера. Ваш номер телефона остаётся прежним, меняется только оператор. Все контакты, которые у вас есть, по-прежнему смогут дозвониться.</div>
+<div class="final-cta" id="final-form">
+  <div class="final-cta-inner reveal">
+    <div class="final-cta-left">
+      <div class="chip">Оставить заявку</div>
+      <h2>Перенеси номер сегодня</h2>
+      <p class="sub">Укажи номер — мы перезвоним за 5 минут и оформим всё бесплатно.</p>
+      <div id="final-form-wrap">
+        <form class="big-form" onsubmit="handleFinalForm(event)">
+          <input class="big-input" type="tel" id="final-phone" placeholder="+7 700 000 00 00" autocomplete="tel">
+          <input class="big-input" type="text" id="final-name" placeholder="Ваше имя (необязательно)" autocomplete="name">
+          <button class="big-btn" type="submit">Перенести номер бесплатно →</button>
+          <p class="cta-consent">Нажимая кнопку, вы соглашаетесь с <a href="#">условиями обработки персональных данных</a> и даёте согласие на получение звонка.</p>
+        </form>
+      </div>
+      <div class="success-msg" id="success-msg">
+        <span class="success-icon">🎉</span>
+        <h3>Заявка принята!</h3>
+        <p>Наш менеджер перезвонит вам в течение 5 минут.<br>Проверьте, что телефон доступен для входящих звонков.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Сколько времени занимает перенос?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">После подачи заявки и подписания договора перенос осуществляется в течение 1 рабочего дня. В большинстве случаев номер переносится ночью, чтобы не прерывать ваше использование связи.</div>
+    <div class="final-cta-right">
+      <div class="cta-feature"><div class="cf-icon">🆓</div><div class="cf-text"><h4>Перенос номера бесплатно</h4><p>Никаких комиссий и скрытых платежей за перенос</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">⚡</div><div class="cf-text"><h4>Перезвоним за 5 минут</h4><p>Менеджер свяжется и ответит на все вопросы</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">🎁</div><div class="cf-text"><h4>3 месяца интернета в подарок</h4><p>Бонус для всех, кто перейдёт до 31 декабря 2025</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">🛡️</div><div class="cf-text"><h4>Поддержка на каждом шаге</h4><p>Персональный менеджер сопроводит весь процесс</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">📱</div><div class="cf-text"><h4>Ваш номер остаётся вашим</h4><p>Гарантия МНП — номер сохраняется при любом переходе</p></div></div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Нужно ли мне расторгать договор с текущим оператором?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Нет, вам не нужно самостоятельно расторгать договор. При подаче заявки на МНП договор с предыдущим оператором расторгается автоматически в соответствии с законодательством РК.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Есть ли ограничения для переноса номера?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Перенос доступен для физических лиц с казахстанскими номерами. Необходимо отсутствие задолженности перед текущим оператором. Номер должен быть активным не менее 3 месяцев.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Буду ли я доступен во время переноса?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Перенос занимает около 30 минут в ночное время. В этот короткий период возможна временная недоступность номера. О точном времени вас уведомят заранее по SMS.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-section" id="mnp-form">
-  <div class="cta-inner reveal">
-    <span class="section-label">Начать прямо сейчас</span>
-    <h2>Перенеси номер в Activ</h2>
-    <p class="sub">Введите свой номер и мы перезвоним, чтобы помочь с переходом бесплатно.</p>
-
-    <form class="mnp-form" onsubmit="handleSubmit(event)">
-      <input class="mnp-input" type="tel" placeholder="+7 7XX XXX XXXX" id="phone-input" pattern="[+]?[0-9\s()-]{10,15}">
-      <button type="submit" class="btn-primary">Перейти</button>
-    </form>
-    <p class="form-hint">Нажимая кнопку, вы соглашаетесь с <a href="#" style="color:var(--red)">условиями оферты</a></p>
   </div>
 </div>
 
 <footer>
-  <a class="logo" href="#">activ<span>.</span></a>
-  <span>© 2025 Activ. Все права защищены.</span>
-  <span>8 747 000 00 00</span>
+  <a class="logo" href="#">activ<span class="logo-dot">.</span></a>
+  <div class="footer-links">
+    <a href="#">Условия МНП</a>
+    <a href="#">Тарифы</a>
+    <a href="#">Офисы</a>
+    <a href="#">Поддержка</a>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+  <div style="font-size:13px;color:var(--text3)">© 2025 Activ · 8 747 000 00 00</div>
 </footer>
 
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#final-form">Перенести номер бесплатно →</a>
+</div>
+
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // FAQ toggle
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const input = document.getElementById('phone-input');
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Заявка отправлена ✓';
-    btn.style.background = '#1a7a3c';
-    input.value = '';
-    setTimeout(() => { btn.textContent = 'Перейти'; btn.style.background = ''; }, 4000);
+function formatPhone(input) {
+  input.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (v.startsWith('7') && v.length > 1) {
+      let p = '+7';
+      if (v.length > 1) p += ' ' + v.slice(1, 4);
+      if (v.length > 4) p += ' ' + v.slice(4, 7);
+      if (v.length > 7) p += ' ' + v.slice(7, 9);
+      if (v.length > 9) p += ' ' + v.slice(9, 11);
+      this.value = p;
+    }
+  });
+}
+formatPhone(document.getElementById('hero-phone'));
+formatPhone(document.getElementById('final-phone'));
+
+function handleHeroForm(e) {
+  e.preventDefault();
+  const phone = document.getElementById('hero-phone').value;
+  if (phone.replace(/\D/g,'').length < 11) {
+    document.querySelector('.form-row').style.borderColor = 'rgba(232,0,60,0.6)';
+    return;
   }
+  const btn = e.target.querySelector('.submit-btn');
+  btn.textContent = '✓ Ждите звонка';
+  btn.style.background = '#00A843';
+  setTimeout(() => { btn.textContent = 'Получить звонок'; btn.style.background = ''; document.getElementById('hero-phone').value = ''; }, 5000);
+}
+
+function handleFinalForm(e) {
+  e.preventDefault();
+  const phone = document.getElementById('final-phone').value;
+  if (phone.replace(/\D/g,'').length < 11) {
+    document.getElementById('final-phone').style.borderColor = 'rgba(232,0,60,0.6)';
+    return;
+  }
+  document.getElementById('final-form-wrap').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+}
+
+const finalFormEl = document.getElementById('final-form');
+const stickyEl = document.getElementById('sticky-cta');
+const stickyObs = new IntersectionObserver(entries => {
+  stickyEl.style.display = entries[0].isIntersecting ? 'none' : 'block';
+}, { threshold: 0.2 });
+stickyObs.observe(finalFormEl);
+
+function animateCounters() {
+  document.querySelectorAll('.proof-num').forEach(el => {
+    const unit = el.querySelector('.unit');
+    const unitText = unit ? unit.outerHTML : '';
+    const raw = el.textContent.replace(/[^\d]/g,'');
+    const target = parseInt(raw);
+    if (isNaN(target)) return;
+    let current = 0;
+    const step = target / 40;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.innerHTML = Math.round(current) + unitText;
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+const proofObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateCounters(); proofObs.disconnect(); }
+}, { threshold: 0.5 });
+proofObs.observe(document.querySelector('.proof-bar'));
 </script>
 </body>
 </html>
