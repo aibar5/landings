@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Переходи в Activ — сохрани свой номер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #E8003C;
+    --red-dark: #B0002D;
+    --red-glow: rgba(232,0,60,0.18);
+    --black: #0A0A0A;
+    --off-black: #111111;
+    --card-bg: #161616;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0F0F0;
+    --muted: rgba(240,240,240,0.5);
+    --font-display: 'Unbounded', sans-serif;
+    --font-body: 'Golos Text', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .logo span { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: scale(1.03); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .hero-bg-circle.c1 {
+    width: 600px; height: 600px;
+    background: var(--red-glow);
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  .hero-bg-circle.c2 {
+    width: 300px; height: 300px;
+    background: rgba(232,0,60,0.08);
+    bottom: 40px; right: -60px;
+    animation: pulse 8s ease-in-out infinite 2s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+  }
+  .c2 { animation-name: pulse2 !important; }
+  @keyframes pulse2 {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.1); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,0,60,0.12);
+    border: 1px solid rgba(232,0,60,0.35);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff6685;
+    margin-bottom: 32px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-badge .dot {
+    width: 7px; height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.2; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 7vw, 86px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s ease 0.15s both;
+  }
+  .hero h1 .accent { color: var(--red); }
+
+  .hero p {
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.7s ease 0.45s both;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 var(--red-glow);
+  }
+  .btn-primary:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--red-glow);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 15px 36px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.04);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PHONE VISUAL ── */
+  .hero-phone {
+    margin-top: 72px;
+    position: relative;
+    animation: fadeUp 0.9s ease 0.6s both;
+  }
+  .phone-frame {
+    width: 220px;
+    height: 420px;
+    background: var(--card-bg);
+    border-radius: 36px;
+    border: 2px solid rgba(255,255,255,0.1);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  }
+  .phone-screen {
+    position: absolute;
+    inset: 8px;
+    background: linear-gradient(160deg, #1a0008 0%, #0A0A0A 50%);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .phone-logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 28px;
+    color: #fff;
+  }
+  .phone-logo span { color: var(--red); }
+  .phone-number {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .phone-tag {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .phone-check {
+    width: 40px; height: 40px;
+    background: rgba(232,0,60,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .phone-check svg { width: 20px; height: 20px; }
+  .phone-notch {
+    position: absolute;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+  }
+
+  .arrow-down {
+    position: absolute;
+    bottom: -48px; left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+  }
+
+  /* ── STATS BAR ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--off-black);
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+  }
+  .stat {
+    flex: 1;
+    min-width: 160px;
+    padding: 36px 24px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-num span { color: var(--red); }
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── SECTION ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 64px;
+  }
+
+  /* ── STEPS ── */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    counter-reset: step;
+  }
+
+  .step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .step-card:hover {
+    border-color: rgba(232,0,60,0.3);
+    transform: translateY(-4px);
+  }
+  .step-card::before {
+    counter-increment: step;
+    content: "0" counter(step);
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(232,0,60,0.07);
+    position: absolute;
+    top: -8px;
+    right: 16px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .step-icon {
+    width: 44px; height: 44px;
+    background: rgba(232,0,60,0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .step-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── BENEFITS ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .benefit {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .benefit:hover { border-color: rgba(232,0,60,0.25); }
+  .benefit-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .benefit h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .benefit p { font-size: 14px; color: var(--muted); }
+
+  /* ── FAQ ── */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 22px 28px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-q:hover { color: #fff; }
+  .faq-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    transition: transform 0.25s, background 0.2s;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: rgba(232,0,60,0.2);
+    color: var(--red);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    font-size: 15px;
+    color: var(--muted);
+    padding: 0 28px;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 22px; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    text-align: center;
+    padding: 80px 24px 100px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid rgba(232,0,60,0.2);
+    border-radius: 32px;
+    padding: 64px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(232,0,60,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner h2 { margin-bottom: 16px; }
+  .cta-inner .sub { margin: 0 auto 40px; }
+
+  /* ── FORM ── */
+  .mnp-form {
+    display: flex;
+    gap: 12px;
+    max-width: 440px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mnp-input {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 14px 24px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .mnp-input::placeholder { color: rgba(255,255,255,0.3); }
+  .mnp-input:focus { border-color: rgba(232,0,60,0.5); }
+
+  .form-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero h1 { letter-spacing: -1px; }
+    .stat { min-width: 140px; padding: 28px 16px; }
+    .stat-num { font-size: 28px; }
+    section { padding: 64px 20px; }
+    .cta-inner { padding: 40px 24px; }
+    footer { padding: 32px 20px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">activ<span>.</span></a>
+  <a class="nav-cta" href="#mnp-form">Перейти сейчас</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+
+  <div class="hero-badge">
+    <div class="dot"></div>
+    Сохрани свой номер при переходе
+  </div>
+
+  <h1>Переходи&nbsp;в&nbsp;<span class="accent">Activ</span><br>со&nbsp;своим&nbsp;номером</h1>
+  <p>Никаких новых номеров. Просто лучший тариф, лучшее покрытие и перенос занимает 1 день.</p>
+
+  <div class="hero-actions">
+    <a href="#mnp-form" class="btn-primary">Перенести номер</a>
+    <a href="#how" class="btn-ghost">Как это работает</a>
+  </div>
+
+  <div class="hero-phone">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-logo">activ<span>.</span></div>
+        <div class="phone-number">+7 7XX XXX XXXX</div>
+        <div class="phone-tag">Ваш номер сохранён</div>
+        <div class="phone-check">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="11" stroke="#E8003C" stroke-width="1.5"/>
+            <path d="M7 12.5l3.5 3.5 6.5-7" stroke="#E8003C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">18<span>млн</span></div>
+    <div class="stat-label">абонентов в Казахстане</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">1<span> день</span></div>
+    <div class="stat-label">срок переноса номера</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0<span>₸</span></div>
+    <div class="stat-label">стоимость переноса</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">4<span>G/5G</span></div>
+    <div class="stat-label">широкое покрытие сети</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <span class="section-label">Как это работает</span>
+  <h2>Три простых шага</h2>
+  <p class="sub">Весь процесс занимает не больше 15 минут. Ваш номер переносится за 1 рабочий день.</p>
+
+  <div class="steps reveal">
+    <div class="step-card">
+      <div class="step-icon">📱</div>
+      <h3>Оставьте заявку</h3>
+      <p>Заполните форму онлайн или обратитесь в ближайший офис Activ. Понадобится только удостоверение личности.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">📄</div>
+      <h3>Подпишите договор</h3>
+      <p>Подключите тариф Activ и подпишите договор на перенос номера. Никаких скрытых условий.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">✅</div>
+      <h3>Пользуйтесь</h3>
+      <p>Уже через 1 рабочий день ваш номер будет активен в сети Activ. Контакты ничего менять не нужно.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <span class="section-label">Почему Activ</span>
+  <h2>Выберите лучшее</h2>
+  <p class="sub">Переход к нам — это не просто смена оператора. Это переход на новый уровень связи.</p>
+
+  <div class="benefits-grid reveal">
+    <div class="benefit">
+      <div class="benefit-icon">🚀</div>
+      <div>
+        <h3>Быстрый интернет</h3>
+        <p>4G/5G сеть с максимальным покрытием по всему Казахстану. Скорость до 1 Гбит/с.</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">💰</div>
+      <div>
+        <h3>Выгодные тарифы</h3>
+        <p>Пакеты минут, SMS и интернета по лучшим ценам. Без скрытых платежей.</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🔒</div>
+      <div>
+        <h3>Ваш номер — ваш</h3>
+        <p>МНП гарантирует сохранение номера. Меняется только оператор, номер остаётся прежним.</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🛡️</div>
+      <div>
+        <h3>Поддержка 24/7</h3>
+        <p>Персональный менеджер поможет с переносом. Служба поддержки доступна круглосуточно.</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🎁</div>
+      <div>
+        <h3>Бонус при переходе</h3>
+        <p>Получите 3 месяца бесплатного интернета при переносе номера до 31 декабря 2025.</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">📍</div>
+      <div>
+        <h3>2000+ офисов</h3>
+        <p>Широкая сеть офисов и партнёрских точек продаж по всему Казахстану.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <span class="section-label">Вопросы и ответы</span>
+  <h2>Часто спрашивают</h2>
+  <p class="sub">Если не нашли ответ — напишите нам.</p>
+
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Сохранится ли мой номер при переходе?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Да, именно это и называется МНП — мобильная переносимость номера. Ваш номер телефона остаётся прежним, меняется только оператор. Все контакты, которые у вас есть, по-прежнему смогут дозвониться.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Сколько времени занимает перенос?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">После подачи заявки и подписания договора перенос осуществляется в течение 1 рабочего дня. В большинстве случаев номер переносится ночью, чтобы не прерывать ваше использование связи.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Нужно ли мне расторгать договор с текущим оператором?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Нет, вам не нужно самостоятельно расторгать договор. При подаче заявки на МНП договор с предыдущим оператором расторгается автоматически в соответствии с законодательством РК.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Есть ли ограничения для переноса номера?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Перенос доступен для физических лиц с казахстанскими номерами. Необходимо отсутствие задолженности перед текущим оператором. Номер должен быть активным не менее 3 месяцев.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Буду ли я доступен во время переноса?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Перенос занимает около 30 минут в ночное время. В этот короткий период возможна временная недоступность номера. О точном времени вас уведомят заранее по SMS.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="mnp-form">
+  <div class="cta-inner reveal">
+    <span class="section-label">Начать прямо сейчас</span>
+    <h2>Перенеси номер в Activ</h2>
+    <p class="sub">Введите свой номер и мы перезвоним, чтобы помочь с переходом бесплатно.</p>
+
+    <form class="mnp-form" onsubmit="handleSubmit(event)">
+      <input class="mnp-input" type="tel" placeholder="+7 7XX XXX XXXX" id="phone-input" pattern="[+]?[0-9\s()-]{10,15}">
+      <button type="submit" class="btn-primary">Перейти</button>
+    </form>
+    <p class="form-hint">Нажимая кнопку, вы соглашаетесь с <a href="#" style="color:var(--red)">условиями оферты</a></p>
+  </div>
+</div>
+
+<footer>
+  <a class="logo" href="#">activ<span>.</span></a>
+  <span>© 2025 Activ. Все права защищены.</span>
+  <span>8 747 000 00 00</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('phone-input');
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Заявка отправлена ✓';
+    btn.style.background = '#1a7a3c';
+    input.value = '';
+    setTimeout(() => { btn.textContent = 'Перейти'; btn.style.background = ''; }, 4000);
+  }
+</script>
+</body>
+</html>
