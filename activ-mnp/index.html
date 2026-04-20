@@ -273,7 +273,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 </head>
 <body>
 
-<!-- SVG sprite для переиспользования официального логотипа activ 5G -->
 <svg class="logo-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <defs>
     <symbol id="activ-5g-full" viewBox="0 0 494.74 107.58">
@@ -284,7 +283,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
         <path d="M470.69,47.01h24.05v27.05c-3.24,2.81-7.04,4.98-11.37,6.5-4.34,1.53-9.28,2.29-14.83,2.29-5.12,0-9.69-.8-13.71-2.39-4.02-1.59-7.44-3.82-10.25-6.69-2.81-2.87-4.95-6.3-6.41-10.29-1.47-3.99-2.2-8.39-2.2-13.2s.78-9.01,2.34-13.01c1.56-3.99,3.77-7.47,6.64-10.44,2.87-2.96,6.27-5.29,10.2-6.97,3.93-1.68,8.3-2.53,13.1-2.53,5.68,0,10.65,1.05,14.93,3.13,4.27,2.09,7.81,5.01,10.62,8.75l-9.55,9.08c-2-2.37-4.2-4.31-6.6-5.8-2.4-1.5-5.35-2.25-8.84-2.25-2.87,0-5.43.53-7.67,1.59-2.25,1.06-4.15,2.5-5.71,4.31-1.56,1.81-2.75,3.93-3.56,6.36-.81,2.43-1.22,5.02-1.22,7.77,0,2.99.47,5.71,1.4,8.14.94,2.43,2.25,4.51,3.93,6.22,1.68,1.72,3.66,3.04,5.94,3.98,2.28.94,4.76,1.4,7.44,1.4,2.5,0,4.77-.3,6.83-.89,2.06-.59,3.9-1.54,5.52-2.85v-7.86h-11.04v-11.42Z"/>
       </g>
     </symbol>
-    <!-- Версия только с "activ" (без 5G) для компактных мест. viewBox обрезает правую часть примерно на x=372 -->
     <symbol id="activ-only" viewBox="0 0 372 107.58">
       <use href="#activ-5g-full"/>
     </symbol>
@@ -310,7 +308,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 <nav>
   <a class="logo" href="#" aria-label="activ 5G" style="color:#fff">
-    <svg role="img" aria-label="activ 5G"><use href="#activ-5g-full"/></svg>
+    <svg role="img" aria-label="activ 5G" viewBox="0 0 494.74 107.58"><use href="#activ-5g-full"/></svg>
   </a>
   <div class="nav-right">
     <a class="nav-phone" href="tel:+77470000000">8 747 000 00 00</a>
@@ -419,10 +417,10 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 <div class="operators-section reveal">
   <div class="op-label">Перенесём номер с любого оператора</div>
   <div class="op-logos">
-    <div class="op-logo"><div class="op-name">Kcell</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ"><use href="#activ-only"/></svg></div></div>
-    <div class="op-logo"><div class="op-name">Beeline</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ"><use href="#activ-only"/></svg></div></div>
-    <div class="op-logo"><div class="op-name">Tele2</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ"><use href="#activ-only"/></svg></div></div>
-    <div class="op-logo"><div class="op-name">Altel</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Kcell</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Beeline</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Tele2</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Altel</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
   </div>
 </div>
 
@@ -608,7 +606,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 <footer>
   <a class="logo logo-sm" href="#" aria-label="activ 5G" style="color:#fff">
-    <svg role="img" aria-label="activ 5G"><use href="#activ-5g-full"/></svg>
+    <svg role="img" aria-label="activ 5G" viewBox="0 0 494.74 107.58"><use href="#activ-5g-full"/></svg>
   </a>
   <div class="footer-links">
     <a href="#">Условия МНП</a>
