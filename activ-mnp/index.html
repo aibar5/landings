@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Переход в Activ — сохрани свой номер бесплатно за 1 день</title>
-<meta name="description" content="Перенеси номер любого оператора в Activ бесплатно. МНП за 1 рабочий день. 4G/5G сеть, выгодные тарифы, бонус 3 месяца интернета.">
+<title>Переход в activ — сохрани свой номер бесплатно онлайн</title>
+<meta name="description" content="Перенеси номер любого оператора в activ бесплатно за 5 минут. МНП онлайн через eSIM или с бесплатной доставкой SIM. 4G/5G сеть, тариф за 1 тенге.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Mulish:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,6 +35,666 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
 .ticker { background: var(--red); padding: 9px 0; overflow: hidden; position: relative; z-index: 200; }
+.ticker-inner { display: flex; gap: 48px; animation: ticker 28s linear infinite; white-space: nowrap; width: max-content; }
+.ticker-inner span { font-family: var(--fd); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; display: flex; align-items: center; gap: 12px; }
+.ticker-inner span::before { content: '★'; font-size: 10px; }
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: rgba(8,8,8,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.logo { display: inline-flex; align-items: center; text-decoration: none; height: 34px; }
+.logo svg { height: 100%; width: auto; display: block; }
+.logo-sm svg { height: 28px; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-phone { font-size: 14px; font-weight: 600; color: var(--text2); text-decoration: none; transition: color 0.2s; }
+.nav-phone:hover { color: #fff; }
+.nav-cta { background: var(--red); color: #fff; font-family: var(--fd); font-weight: 700; font-size: 13px; letter-spacing: 0.3px; padding: 10px 22px; border-radius: 8px; text-decoration: none; transition: background 0.18s, transform 0.15s; white-space: nowrap; }
+.nav-cta:hover { background: var(--red-light); transform: translateY(-1px); }
+
+.hero { position: relative; min-height: calc(100vh - 68px - 38px); display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0; padding: 80px; overflow: hidden; max-width: 1400px; margin: 0 auto; }
+.hero-glow { position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(232,0,60,0.14) 0%, transparent 70%); top: -200px; right: -100px; pointer-events: none; border-radius: 50%; }
+.hero-glow2 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,0,60,0.06) 0%, transparent 70%); bottom: -100px; left: -50px; pointer-events: none; border-radius: 50%; }
+.hero-left { position: relative; z-index: 2; }
+
+.trust-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,200,83,0.1); border: 1px solid rgba(0,200,83,0.25); border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--green); letter-spacing: 0.3px; margin-bottom: 28px; animation: fadeUp 0.6s ease both; }
+.trust-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 2s infinite; flex-shrink: 0; }
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,200,83,0.4)}50%{opacity:0.5;box-shadow:0 0 0 4px rgba(0,200,83,0)}}
+
+.hero h1 { font-family: var(--fd); font-size: clamp(38px, 4.5vw, 66px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px; animation: fadeUp 0.6s ease 0.1s both; }
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero h1 .strike { position: relative; color: var(--text3); }
+.hero h1 .strike::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 3px; background: var(--red); transform: rotate(-2deg); }
+
+.hero-desc { font-size: clamp(15px, 1.4vw, 18px); color: var(--text2); max-width: 460px; margin-bottom: 36px; line-height: 1.7; animation: fadeUp 0.6s ease 0.2s both; }
+
+.hero-form { animation: fadeUp 0.6s ease 0.3s both; margin-bottom: 24px; }
+.form-row { display: flex; gap: 10px; max-width: 460px; background: var(--bg3); border: 1.5px solid var(--border2); border-radius: 12px; padding: 6px 6px 6px 20px; transition: border-color 0.2s, box-shadow 0.2s; }
+.form-row:focus-within { border-color: rgba(232,0,60,0.5); box-shadow: 0 0 0 4px rgba(232,0,60,0.08); }
+.phone-field { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--fb); font-size: 16px; font-weight: 500; padding: 10px 0; min-width: 0; }
+.phone-field::placeholder { color: var(--text3); }
+.submit-btn { background: var(--red); color: #fff; font-family: var(--fd); font-weight: 700; font-size: 14px; letter-spacing: 0.3px; padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.18s, transform 0.12s, box-shadow 0.2s; flex-shrink: 0; }
+.submit-btn:hover { background: var(--red-light); transform: scale(1.03); box-shadow: 0 6px 24px rgba(232,0,60,0.35); }
+.submit-btn:active { transform: scale(0.98); }
+
+.form-micro { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text3); margin-top: 12px; max-width: 460px; flex-wrap: wrap; }
+.form-micro-item { display: flex; align-items: center; gap: 5px; }
+.form-micro svg { flex-shrink: 0; }
+
+.hero-social { display: flex; align-items: center; gap: 12px; animation: fadeUp 0.6s ease 0.4s both; }
+.avatars { display: flex; align-items: center; }
+.av { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -8px; background: var(--bg4); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; font-family: var(--fd); }
+.av:first-child { margin-left: 0; }
+.av.a1{background:#3a1a24}.av.a2{background:#1a2a3a}.av.a3{background:#1a3a2a}.av.a4{background:#2a2a3a}
+.hs-count { font-size: 13px; font-weight: 600; color: var(--text); }
+.hs-stars { color: #FFC107; font-size: 12px; letter-spacing: -1px; }
+
+.hero-right { display: flex; justify-content: center; align-items: center; position: relative; z-index: 2; animation: fadeUp 0.8s ease 0.2s both; }
+.comparison-card { background: var(--bg3); border: 1px solid var(--border2); border-radius: 20px; padding: 28px; width: 340px; box-shadow: 0 40px 80px rgba(0,0,0,0.5); position: relative; }
+.cc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.cc-title { font-family: var(--fd); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); }
+.cc-tag { background: rgba(0,200,83,0.12); color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(0,200,83,0.2); }
+.cc-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.cc-row:last-child { border-bottom: none; }
+.cc-param { font-size: 13px; color: var(--text2); }
+.cc-vals { display: flex; gap: 24px; }
+.cc-old { font-size: 13px; color: var(--text3); text-decoration: line-through; min-width: 60px; text-align: right; }
+.cc-new { font-size: 13px; font-weight: 700; color: var(--green); min-width: 60px; text-align: right; }
+.cc-footer { margin-top: 20px; background: rgba(232,0,60,0.08); border: 1px solid rgba(232,0,60,0.2); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; }
+.cc-bonus-icon { width: 36px; height: 36px; background: var(--red); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cc-bonus-text { font-size: 12px; color: var(--text2); line-height: 1.4; }
+.cc-bonus-text strong { color: #fff; font-weight: 700; }
+
+.float-pill { position: absolute; background: var(--bg4); border: 1px solid var(--border2); border-radius: 12px; padding: 10px 16px; display: flex; align-items: center; gap: 10px; font-size: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.4); animation: floatPill 3s ease-in-out infinite; }
+.float-pill.p1 { top: -24px; right: -16px; animation-delay: 0s; }
+.float-pill.p2 { bottom: -20px; left: -16px; animation-delay: 1.5s; }
+@keyframes floatPill { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.fp-icon { font-size: 18px; }
+.fp-text { font-weight: 600; color: var(--text); }
+.fp-sub { color: var(--text3); font-size: 11px; }
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.proof-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 80px; display: grid; grid-template-columns: repeat(4, 1fr); position: relative; z-index: 1; }
+.proof-item { text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
+.proof-item:last-child { border-right: none; }
+.proof-num { font-family: var(--fd); font-size: 38px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 4px; letter-spacing: -1px; }
+.proof-num .unit { font-size: 22px; color: var(--red); }
+.proof-label { font-size: 13px; color: var(--text3); font-weight: 500; }
+
+.operators-section { padding: 56px 80px; max-width: 1400px; margin: 0 auto; text-align: center; }
+.op-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text3); margin-bottom: 28px; }
+.op-logos { display: flex; justify-content: center; align-items: center; gap: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.op-logo { flex: 1; padding: 20px 32px; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+.op-logo:last-child { border-right: none; }
+.op-logo:hover { background: var(--bg3); }
+.op-name { font-family: var(--fd); font-weight: 800; font-size: 16px; color: var(--text3); }
+.op-arrow { font-size: 18px; color: var(--red); font-weight: 700; }
+.op-activ svg { display: block; height: 24px; width: auto; }
+
+.section-wrap { padding: 96px 80px; max-width: 1400px; margin: 0 auto; }
+.section-head { margin-bottom: 56px; }
+.chip { display: inline-block; background: rgba(232,0,60,0.1); border: 1px solid rgba(232,0,60,0.2); border-radius: 6px; padding: 5px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--red); margin-bottom: 16px; }
+h2 { font-family: var(--fd); font-size: clamp(30px, 3.5vw, 52px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; }
+.sub { font-size: 17px; color: var(--text2); margin-top: 12px; max-width: 500px; }
+
+.steps-timeline { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; gap: 32px; }
+.steps-timeline::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 1px; background: linear-gradient(to right, transparent, var(--red), var(--red), transparent); opacity: 0.3; pointer-events: none; }
+.step { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 36px 28px; position: relative; transition: border-color 0.25s, transform 0.25s, background 0.25s; }
+.step:hover { border-color: rgba(232,0,60,0.35); background: var(--bg3); transform: translateY(-6px); }
+.step-num { position: absolute; top: -16px; left: 28px; background: var(--red); color: #fff; font-family: var(--fd); font-weight: 900; font-size: 13px; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; letter-spacing: -0.5px; }
+.step-time { display: inline-block; background: rgba(0,200,83,0.1); border: 1px solid rgba(0,200,83,0.2); color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 16px; }
+.step h3 { font-family: var(--fd); font-size: 18px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px; }
+.step p { font-size: 14px; color: var(--text2); line-height: 1.65; }
+.step-detail { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text3); }
+
+.tariffs-grid { display: grid; grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+.tariff-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; position: relative; transition: border-color 0.25s, transform 0.25s; }
+.tariff-card:hover { border-color: rgba(232,0,60,0.3); transform: translateY(-4px); }
+.tariff-card.featured { border-color: rgba(232,0,60,0.45); background: linear-gradient(145deg, rgba(232,0,60,0.07) 0%, var(--bg2) 60%); }
+.tariff-pop { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; font-family: var(--fd); font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 16px; border-radius: 6px; white-space: nowrap; }
+.tariff-name { font-family: var(--fd); font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 12px; }
+.tariff-price { font-family: var(--fd); font-size: 44px; font-weight: 900; line-height: 1; letter-spacing: -2px; color: #fff; margin-bottom: 4px; }
+.tariff-price .curr { font-size: 22px; vertical-align: super; letter-spacing: 0; }
+.tariff-price .per { font-size: 14px; font-weight: 500; color: var(--text3); letter-spacing: 0; }
+.tariff-old { font-size: 14px; color: var(--text3); text-decoration: line-through; margin-bottom: 20px; }
+.tariff-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.tariff-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text2); line-height: 1.4; }
+.tf-check { width: 18px; height: 18px; border-radius: 5px; background: rgba(0,200,83,0.12); border: 1px solid rgba(0,200,83,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.tariff-cta { display: block; text-align: center; padding: 16px; border-radius: 10px; font-family: var(--fd); font-weight: 800; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.tariff-cta.primary { background: var(--red); color: #fff; }
+.tariff-cta.primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,0,60,0.3); }
+
+.promo-details { background: rgba(232,0,60,0.08); border: 1px solid rgba(232,0,60,0.15); border-radius: 12px; padding: 16px; margin-bottom: 28px; font-size: 13px; color: var(--text2); }
+.promo-details strong { color: #fff; font-weight: 700; display: block; margin-bottom: 6px; }
+.promo-details div { margin-bottom: 4px; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 28px; }
+.review-stars { color: #FFC107; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+.review-text { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.rev-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0; }
+.rev-name { font-weight: 600; font-size: 14px; }
+.rev-from { font-size: 12px; color: var(--text3); }
+
+.trust-row { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 48px 80px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text3); }
+.trust-icon { width: 32px; height: 32px; background: var(--bg4); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 1px solid var(--border); }
+
+.faq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item:hover { border-color: var(--border2); }
+.faq-item.open { border-color: rgba(232,0,60,0.2); }
+.faq-q { width: 100%; background: none; border: none; color: var(--text); font-family: var(--fb); font-size: 15px; font-weight: 600; padding: 20px 24px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; line-height: 1.4; }
+.faq-ico { width: 24px; height: 24px; border-radius: 6px; background: var(--bg4); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-size: 14px; color: var(--text3); }
+.faq-item.open .faq-ico { background: rgba(232,0,60,0.15); border-color: rgba(232,0,60,0.3); color: var(--red); transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s; font-size: 14px; color: var(--text2); line-height: 1.7; padding: 0 24px; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+
+.final-cta { padding: 0 80px 100px; max-width: 1400px; margin: 0 auto; }
+.final-cta-inner { background: var(--bg2); border: 1px solid rgba(232,0,60,0.25); border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+.final-cta-left { padding: 64px; position: relative; z-index: 1; }
+.final-cta-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 0% 50%, rgba(232,0,60,0.1) 0%, transparent 60%); pointer-events: none; }
+.final-cta-left h2 { margin-bottom: 16px; }
+.final-cta-left .sub { margin-bottom: 36px; }
+.big-form { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+.big-input { background: var(--bg4); border: 1.5px solid var(--border2); border-radius: 12px; color: #fff; font-family: var(--fb); font-size: 16px; padding: 16px 20px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+.big-input::placeholder { color: var(--text3); }
+.big-input:focus { border-color: rgba(232,0,60,0.5); box-shadow: 0 0 0 4px rgba(232,0,60,0.07); }
+.big-btn { background: var(--red); color: #fff; font-family: var(--fd); font-weight: 800; font-size: 16px; letter-spacing: 0.3px; padding: 18px; border-radius: 12px; border: none; cursor: pointer; transition: background 0.18s, transform 0.12s, box-shadow 0.2s; width: 100%; }
+.big-btn:hover { background: var(--red-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,0,60,0.35); }
+.big-btn:active { transform: translateY(0); }
+.cta-consent { font-size: 12px; color: var(--text3); line-height: 1.5; margin-top: 4px; }
+.cta-consent a { color: var(--text3); }
+.cta-consent a:hover { color: var(--red); }
+.final-cta-right { background: var(--bg3); border-left: 1px solid var(--border); padding: 64px; display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+.cta-feature { display: flex; gap: 16px; align-items: flex-start; }
+.cf-icon { width: 40px; height: 40px; background: rgba(232,0,60,0.1); border: 1px solid rgba(232,0,60,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cf-text h4 { font-family: var(--fd); font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.cf-text p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 40px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; position: relative; z-index: 1; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+
+.sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: rgba(8,8,8,0.95); border-top: 1px solid var(--border); padding: 14px 20px; backdrop-filter: blur(16px); }
+.sticky-cta a { display: block; text-align: center; background: var(--red); color: #fff; font-family: var(--fd); font-weight: 800; font-size: 15px; padding: 16px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.success-msg { display: none; text-align: center; padding: 24px; }
+.success-msg.show { display: block; }
+.success-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+.success-msg h3 { font-family: var(--fd); font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.success-msg p { font-size: 14px; color: var(--text2); }
+
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: 1fr; gap: 64px; padding: 60px 40px; text-align: center; }
+  .hero-right { justify-content: center; }
+  .hero-desc { max-width: 100%; }
+  .form-row { max-width: 100%; }
+  .hero-social { justify-content: center; }
+  .proof-bar { padding: 28px 40px; }
+  .tariffs-grid { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .final-cta-inner { grid-template-columns: 1fr; }
+  .final-cta-right { border-left: none; border-top: 1px solid var(--border); }
+  .faq-cols { grid-template-columns: 1fr; }
+  .operators-section, .section-wrap, .final-cta { padding-left: 40px; padding-right: 40px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-phone { display: none; }
+  .hero { padding: 48px 20px; }
+  .proof-bar { grid-template-columns: repeat(2,1fr); padding: 20px; }
+  .proof-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .proof-item:nth-child(odd) { border-right: 1px solid var(--border); }
+  .proof-item:last-child, .proof-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .steps-timeline { grid-template-columns: 1fr; }
+  .steps-timeline::before { display: none; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .op-logos { flex-direction: column; }
+  .op-logo { border-right: none; border-bottom: 1px solid var(--border); }
+  .op-logo:last-child { border-bottom: none; }
+  .final-cta-left, .final-cta-right { padding: 32px 24px; }
+  .operators-section, .section-wrap, .final-cta { padding-left: 20px; padding-right: 20px; }
+  .trust-row { padding: 32px 20px; gap: 24px; }
+  footer { padding: 32px 20px; flex-direction: column; align-items: center; text-align: center; }
+  .sticky-cta { display: block; }
+  body { padding-bottom: 80px; }
+  .comparison-card { width: 300px; }
+}
+
+/* SVG-defs */
+.logo-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<svg class="logo-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <symbol id="activ-5g-full" viewBox="0 0 494.74 107.58">
+      <g fill="currentColor">
+        <path d="M182.66,32v4c-3.84-3.18-8.78-5.03-14.33-5.03-13.32,0-24.01,11.29-24.01,25.97,0,6.78,2.42,12.93,6.25,17.45,4.34,5.14,11.2,8.42,18.46,8.42,4.95,0,9.59-1.54,13.62-5.03v4h12.61V32h-12.61ZM182.15,64.33c-2.52,3.69-6.86,6.16-11.81,6.16-7.36,0-12.91-5.75-12.91-13.55,0-7.18,4.94-13.65,12.61-13.65,5.04,0,9.38,2.46,12.11,6.16v14.89ZM249.98,71.62c-5.75,7.8-13.02,11.19-22.2,11.19-15.13,0-26.23-11.49-26.23-25.86s11.4-25.98,26.33-25.98c8.47,0,16.04,4,20.58,9.96l-9.28,8.31c-2.62-3.49-6.56-5.95-11.3-5.95-7.56,0-13.21,6.05-13.21,13.66s5.55,13.54,13.52,13.54c5.35,0,9.59-3.28,11.71-6.57l10.09,7.7ZM289,81.79c-1.72.61-5.65,1.02-8.17,1.02-7.87,0-13.62-2.67-16.95-7.18-2.52-3.39-3.63-7.8-3.63-14.89v-17.45h-8.19v-11.29h8.19v-13.86h13.11v13.86h15.64v11.29h-15.64v18.99c0,3.08.51,4.93,1.62,6.26,1.31,1.54,3.43,2.46,6.66,2.46,1.92,0,4.44-.31,5.35-.52l2.01,11.3ZM298.08,32h13.12v49.79h-13.12V32ZM370.99,32l-22.5,49.79h-9.08l-22.5-49.79h13.62l13.42,30.38,13.41-30.38h13.63Z"/>
+        <path d="M114.86,44.32c0,.45-.36.81-.81.81s-.81-.36-.81-.81.36-.81.81-.81.81.36.81.81M112.12,25.07c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M41.2,13.28c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M81.85,18.97c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M49.62,18.76c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M111,32.19c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M95.48,38.3c0,4.35,3.52,7.87,7.87,7.87s7.87-3.52,7.87-7.87-3.53-7.87-7.87-7.87-7.87,3.52-7.87,7.87M99.48,26.6c0,1.79,1.45,3.24,3.24,3.24s3.25-1.45,3.25-3.24-1.45-3.24-3.25-3.24-3.24,1.45-3.24,3.24M98.67,30.03c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M98.03,20.41c.03.9.79,1.59,1.68,1.56.89-.03,1.6-.78,1.56-1.68-.03-.9-.78-1.6-1.68-1.56-.89.03-1.59.78-1.56,1.68M98.03,15.98c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M95.28,26.35c0,.9.73,1.62,1.62,1.62s1.62-.73,1.62-1.62-.73-1.62-1.62-1.62-1.62.72-1.62,1.62M82.84,21.68c0,3.58,2.9,6.49,6.48,6.49s6.49-2.9,6.49-6.49-2.9-6.48-6.49-6.48-6.48,2.9-6.48,6.48M87.56,12.36c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M83.86,16.18c.89-.03,1.59-.78,1.56-1.68-.03-.89-.78-1.59-1.67-1.56-.89.03-1.6.78-1.57,1.68.03.9.78,1.59,1.68,1.56M74.32,12.03c0,1.79,1.45,3.24,3.24,3.24s3.25-1.45,3.25-3.24-1.45-3.24-3.25-3.24-3.24,1.45-3.24,3.24M74.8,3.92c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M74.56,17.81c.54,0,.97-.44.97-.97s-.43-.97-.97-.97-.98.43-.98.97.44.97.98.97M100.31,63.6c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M56.66,17.49c0,4.48,3.63,8.11,8.11,8.11s8.11-3.63,8.11-8.11-3.63-8.11-8.11-8.11-8.11,3.63-8.11,8.11M69.71,9.17c.9-.03,1.6-.78,1.56-1.68-.03-.9-.78-1.6-1.67-1.56-.9.03-1.6.78-1.56,1.68.03.9.78,1.59,1.67,1.56M66.32,3.92c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M58.33,11.25c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M56.4,23.16c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M53.74,15.13c1.79,0,3.24-1.45,3.24-3.24s-1.45-3.24-3.24-3.24-3.24,1.45-3.24,3.24,1.45,3.24,3.24,3.24M48.98,12.34c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M48.58,16.14c.9,0,1.62-.72,1.62-1.62s-.73-1.62-1.62-1.62-1.62.73-1.62,1.62.73,1.62,1.62,1.62M57.61,27.22c.94,0,1.71-.77,1.71-1.71s-.77-1.71-1.71-1.71-1.71.77-1.71,1.71.77,1.71,1.71,1.71M55.66,17.74c0-.94-.77-1.71-1.71-1.71s-1.71.76-1.71,1.71.76,1.71,1.71,1.71,1.71-.77,1.71-1.71M59.52,27.6c0,.71.58,1.29,1.3,1.29s1.29-.58,1.29-1.29-.58-1.3-1.29-1.3-1.3.58-1.3,1.3M43.55,11.44c1.79,0,3.24-1.45,3.24-3.24s-1.45-3.24-3.24-3.24-3.25,1.45-3.25,3.24,1.45,3.24,3.25,3.24M39.07,5.11c.89-.03,1.59-.78,1.56-1.68-.03-.89-.78-1.59-1.68-1.56-.89.03-1.59.78-1.56,1.68.03.89.78,1.59,1.68,1.56M36.45,1.62c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M34.13,17.47c2.69,0,4.87-2.18,4.87-4.86s-2.18-4.87-4.87-4.87-4.86,2.18-4.86,4.87,2.18,4.86,4.86,4.86M30.58,6.73c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M27.78,13.1c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M15.33,20.5c0,4.38,3.55,7.92,7.92,7.92s7.92-3.55,7.92-7.92-3.55-7.92-7.92-7.92-7.92,3.55-7.92,7.92M16.32,13.54c.89,0,1.62-.73,1.62-1.62s-.73-1.62-1.62-1.62-1.62.73-1.62,1.62.73,1.62,1.62,1.62M13.89,26.64c.9,0,1.62-.73,1.62-1.62s-.73-1.62-1.62-1.62-1.62.73-1.62,1.62.73,1.62,1.62,1.62M5.45,27.17c0,1.79,1.45,3.24,3.24,3.24s3.24-1.45,3.24-3.24-1.45-3.24-3.24-3.24-3.24,1.45-3.24,3.24M59.18,100.79c-1.43,0-2.59,1.16-2.59,2.59s1.16,2.59,2.59,2.59,2.59-1.16,2.59-2.59-1.16-2.59-2.59-2.59M6.42,21.65c.9,0,1.62-.73,1.62-1.62s-.73-1.62-1.62-1.62-1.62.73-1.62,1.62.73,1.62,1.62,1.62M6.91,16.07c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M3.67,33.29c.51,0,.93-.42.93-.93s-.42-.93-.93-.93-.93.42-.93.93.42.93.93.93M3.24,46.28c0-.9-.73-1.62-1.62-1.62s-1.62.73-1.62,1.62.73,1.62,1.62,1.62,1.62-.73,1.62-1.62M2.37,68.35c-.89,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M9.4,70.44c-1.79,0-3.24,1.45-3.24,3.24s1.45,3.24,3.24,3.24,3.25-1.45,3.25-3.24-1.45-3.24-3.25-3.24M8.59,82.03c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M16.28,74.55c-1.79,0-3.24,1.45-3.24,3.24s1.45,3.25,3.24,3.25,3.24-1.46,3.24-3.25-1.45-3.24-3.24-3.24M17.29,82.45c-.89,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M17.45,70.65c0,2.42,1.96,4.38,4.38,4.38s4.38-1.96,4.38-4.38-1.96-4.38-4.38-4.38-4.38,1.96-4.38,4.38M23.38,30.14c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M45.01,24.23c0,.45.36.81.81.81s.81-.36.81-.81-.36-.81-.81-.81-.81.36-.81.81M51.31,17.11c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M52.17,28.6c0,.45.36.81.81.81s.81-.36.81-.81-.36-.81-.81-.81-.81.36-.81.81M21.55,65.41c.6,0,1.09-.49,1.09-1.09s-.49-1.09-1.09-1.09-1.09.49-1.09,1.09.49,1.09,1.09,1.09M21,31.84c0-2.69-2.18-4.87-4.87-4.87s-4.87,2.18-4.87,4.87,2.18,4.86,4.87,4.86,4.87-2.18,4.87-4.86M1.88,51.64c0,1.79,1.45,3.24,3.24,3.24s3.24-1.45,3.24-3.24-1.45-3.24-3.24-3.24-3.24,1.45-3.24,3.24M9.91,51.3c0,.9.73,1.62,1.62,1.62s1.62-.72,1.62-1.62-.73-1.62-1.62-1.62-1.62.73-1.62,1.62M18.24,38.32c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M15.26,52c.9,0,1.62-.73,1.62-1.62s-.73-1.62-1.62-1.62-1.62.73-1.62,1.62.73,1.62,1.62,1.62M16.7,53.92c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M13.27,71.54c0,.89.73,1.62,1.62,1.62s1.62-.73,1.62-1.62-.73-1.62-1.62-1.62-1.62.73-1.62,1.62M12.1,69.36c4.41,0,7.99-3.58,7.99-7.99s-3.58-7.99-7.99-7.99-7.99,3.58-7.99,7.99,3.58,7.99,7.99,7.99M10.64,33.49c0-.9-.73-1.62-1.62-1.62s-1.62.73-1.62,1.62.73,1.62,1.62,1.62,1.62-.73,1.62-1.62M16.97,42.74c0-3.58-2.9-6.49-6.49-6.49s-6.49,2.91-6.49,6.49,2.9,6.49,6.49,6.49,6.49-2.91,6.49-6.49M35.63,82.84c0-4.33-3.55-7.84-7.92-7.84s-7.92,3.51-7.92,7.84,3.55,7.85,7.92,7.85,7.92-3.51,7.92-7.85M28.83,93.84c0-.9-.73-1.62-1.62-1.62s-1.62.73-1.62,1.62.73,1.62,1.62,1.62,1.62-.73,1.62-1.62M29.78,98.63c-.45,0-.81.36-.81.81s.36.82.81.82.81-.37.81-.82-.36-.81-.81-.81M32.69,90.37c-.9,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M44.61,89.52c0-2.69-2.18-4.86-4.87-4.86s-4.86,2.18-4.86,4.86,2.18,4.87,4.86,4.87,4.87-2.18,4.87-4.87M40.15,102.23c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M42.39,94.55c-.89,0-1.62.73-1.62,1.62s.73,1.63,1.62,1.63,1.62-.73,1.62-1.63-.73-1.62-1.62-1.62M46.08,100.29c-.89,0-1.62.72-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M42.49,14.27c-2.68,0-4.86,2.18-4.86,4.86s2.18,4.87,4.86,4.87,4.87-2.18,4.87-4.87-2.18-4.86-4.87-4.86M49.72,90.76c-2.69,0-4.87,2.18-4.87,4.87s2.18,4.86,4.87,4.86,4.86-2.18,4.86-4.86-2.18-4.87-4.86-4.87M53.44,101.94c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M55.73,100.32c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M56.73,96.45c-.9,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M57.13,92.52c-.9,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M59.28,30.51c0-1.43-1.16-2.59-2.59-2.59s-2.59,1.16-2.59,2.59,1.16,2.59,2.59,2.59,2.59-1.16,2.59-2.59M55.06,23.55c0-2.11-1.71-3.82-3.82-3.82s-3.82,1.71-3.82,3.82,1.71,3.82,3.82,3.82,3.82-1.71,3.82-3.82M34.4,19.05c-1.42,0-2.57,1.15-2.57,2.57s1.15,2.57,2.57,2.57,2.57-1.15,2.57-2.57-1.15-2.57-2.57-2.57M67.44,88.47c0,.54.44.97.97.97s.97-.43.97-.97-.44-.98-.97-.98-.97.43-.97.98M65.95,89.86c-3.58,0-6.49,2.9-6.49,6.49s2.9,6.48,6.49,6.48,6.49-2.9,6.49-6.48-2.9-6.49-6.49-6.49M74.99,94.22c-.9,0-1.63.73-1.63,1.62s.73,1.62,1.63,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M80.61,94.79c-1.79,0-3.25,1.45-3.25,3.24s1.45,3.25,3.25,3.25,3.24-1.45,3.24-3.25-1.45-3.24-3.24-3.24M78.67,103.71c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.37-.81-.81-.81M63.01,105.96c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M82.67,87.67c-.89,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M80.25,93.33c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.82.36-.82.81.36.81.82.81M71.95,22.98c0,.45.36.81.81.81s.82-.36.82-.81-.36-.81-.82-.81-.81.36-.81.81M77.14,82.01c0-.45-.36-.81-.81-.81s-.81.36-.81.81.36.81.81.81.81-.36.81-.81M75.1,83.47c-2.69,0-4.86,2.18-4.86,4.87s2.18,4.86,4.86,4.86,4.86-2.18,4.86-4.86-2.18-4.87-4.86-4.87M81.7,25.02c.45,0,.81-.36.81-.81s-.36-.81-.81-.81-.81.36-.81.81.36.81.81.81M83.14,74.69c0,.9.73,1.62,1.62,1.62s1.63-.73,1.63-1.62-.73-1.62-1.63-1.62-1.62.73-1.62,1.62M82.81,76.59c-2.69,0-4.87,2.18-4.87,4.87s2.18,4.86,4.87,4.86,4.86-2.18,4.86-4.86-2.18-4.87-4.86-4.87M90.46,80.82c-.89,0-1.62.72-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M94.41,90.07c-.89.03-1.59.78-1.56,1.68.03.89.78,1.59,1.67,1.56.9-.03,1.6-.78,1.56-1.67-.03-.9-.78-1.6-1.68-1.56M96.08,86.02c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M37.82,83.91c.54,0,.97-.44.97-.97s-.44-.98-.97-.98-.97.43-.97.98.43.97.97.97M94.84,64.29c-4.48,0-8.11,3.63-8.11,8.11s3.63,8.1,8.11,8.1,8.11-3.63,8.11-8.1-3.63-8.11-8.11-8.11M103.53,64.64c-.89,0-1.62.73-1.62,1.62s.73,1.62,1.62,1.62,1.62-.73,1.62-1.62-.73-1.62-1.62-1.62M98.64,46.41c0-.54-.43-.98-.97-.98s-.97.44-.97.98.44.97.97.97.97-.44.97-.97M96.21,62.12c1.45,0,2.63-1.18,2.63-2.63s-1.17-2.63-2.63-2.63-2.63,1.18-2.63,2.63,1.18,2.63,2.63,2.63M94.41,34.19c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M91.68,62.67c0,.45.36.81.81.81s.81-.36.81-.81-.36-.81-.81-.81-.81.36-.81.81M105.94,52.01c0-2.69-2.18-4.86-4.86-4.86s-4.86,2.18-4.86,4.86,2.18,4.86,4.86,4.86,4.86-2.18,4.86-4.86M104.68,57.24c-1.79,0-3.24,1.45-3.24,3.24s1.45,3.25,3.24,3.25,3.24-1.45,3.24-3.25-1.45-3.24-3.24-3.24M108.84,63.81c-.89.03-1.6.78-1.56,1.68.03.89.78,1.6,1.68,1.56.89-.03,1.59-.78,1.56-1.68-.03-.89-.78-1.6-1.67-1.57M110.23,68.51c-.45,0-.81.36-.81.81s.36.81.81.81.81-.36.81-.81-.36-.81-.81-.81M111.43,45.97c-.89.03-1.59.78-1.56,1.68.03.89.79,1.59,1.68,1.56.89-.03,1.6-.78,1.56-1.68-.03-.89-.78-1.59-1.68-1.56M95.74,31.23c0-1.26-.97-2.29-2.17-2.29s-2.16,1.02-2.16,2.29.97,2.29,2.16,2.29,2.17-1.02,2.17-2.29M89.41,29.53c0,.45.36.81.81.81s.81-.36.81-.81-.36-.81-.81-.81-.81.36-.81.81M80.84,20.71c0-1.79-1.45-3.24-3.24-3.24s-3.24,1.45-3.24,3.24,1.45,3.24,3.24,3.24,3.24-1.45,3.24-3.24M27.9,71.91c-.6,0-1.09.49-1.09,1.09s.49,1.09,1.09,1.09,1.09-.49,1.09-1.09-.49-1.09-1.09-1.09M37.62,99.61c1.18,0,2.14-.96,2.14-2.14s-.96-2.15-2.14-2.15-2.14.96-2.14,2.15.96,2.14,2.14,2.14"/>
+        <path d="M394.94,64.71c1.82,1.69,3.78,3.04,5.88,4.05,2.09,1.01,4.56,1.52,7.4,1.52,1.89,0,3.53-.29,4.91-.86,1.38-.57,2.52-1.33,3.39-2.28.88-.94,1.52-2.03,1.93-3.24s.61-2.47.61-3.75c0-1.01-.2-2.09-.61-3.24-.41-1.15-1.05-2.19-1.93-3.14-.88-.95-2.03-1.72-3.45-2.33-1.42-.61-3.14-.91-5.17-.91-1.76,0-3.38.19-4.86.56-1.49.37-2.91.83-4.26,1.37l-6.69-4.96,5.57-29.99h34.45v12.77h-24.42l-1.93,10.23c.47-.2,1.33-.39,2.58-.56,1.25-.17,2.52-.25,3.8-.25,3.11,0,5.98.47,8.61,1.42,2.63.95,4.91,2.31,6.84,4.1,1.93,1.79,3.41,3.94,4.46,6.43,1.05,2.5,1.57,5.3,1.57,8.41s-.49,5.95-1.47,8.71c-.98,2.77-2.5,5.2-4.56,7.3-2.06,2.09-4.66,3.77-7.8,5.02-3.14,1.25-6.87,1.87-11.2,1.87-4.86,0-9.02-.76-12.46-2.28-3.44-1.52-6.45-3.46-9.02-5.83l7.8-10.13Z"/>
+        <path d="M470.69,47.01h24.05v27.05c-3.24,2.81-7.04,4.98-11.37,6.5-4.34,1.53-9.28,2.29-14.83,2.29-5.12,0-9.69-.8-13.71-2.39-4.02-1.59-7.44-3.82-10.25-6.69-2.81-2.87-4.95-6.3-6.41-10.29-1.47-3.99-2.2-8.39-2.2-13.2s.78-9.01,2.34-13.01c1.56-3.99,3.77-7.47,6.64-10.44,2.87-2.96,6.27-5.29,10.2-6.97,3.93-1.68,8.3-2.53,13.1-2.53,5.68,0,10.65,1.05,14.93,3.13,4.27,2.09,7.81,5.01,10.62,8.75l-9.55,9.08c-2-2.37-4.2-4.31-6.6-5.8-2.4-1.5-5.35-2.25-8.84-2.25-2.87,0-5.43.53-7.67,1.59-2.25,1.06-4.15,2.5-5.71,4.31-1.56,1.81-2.75,3.93-3.56,6.36-.81,2.43-1.22,5.02-1.22,7.77,0,2.99.47,5.71,1.4,8.14.94,2.43,2.25,4.51,3.93,6.22,1.68,1.72,3.66,3.04,5.94,3.98,2.28.94,4.76,1.4,7.44,1.4,2.5,0,4.77-.3,6.83-.89,2.06-.59,3.9-1.54,5.52-2.85v-7.86h-11.04v-11.42Z"/>
+      </g>
+    </symbol>
+    <symbol id="activ-only" viewBox="0 0 372 107.58">
+      <use href="#activ-5g-full"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Бесплатный перенос номера</span>
+    <span>Первый месяц за 1 тенге</span>
+    <span>eSIM за пару минут</span>
+    <span>Бесплатная доставка SIM</span>
+    <span>Лучшая сеть в Казахстане</span>
+    <span>0 тенге за МНП</span>
+    <span>Бесплатный перенос номера</span>
+    <span>Первый месяц за 1 тенге</span>
+    <span>eSIM за пару минут</span>
+    <span>Бесплатная доставка SIM</span>
+    <span>Лучшая сеть в Казахстане</span>
+    <span>0 тенге за МНП</span>
+  </div>
+</div>
+
+<nav>
+  <a class="logo" href="#" aria-label="activ 5G" style="color:#fff">
+    <svg role="img" aria-label="activ 5G" viewBox="0 0 494.74 107.58"><use href="#activ-5g-full"/></svg>
+  </a>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+77010003030">8 701 000 30 30</a>
+    <a class="nav-cta" href="#final-form">Перенести номер →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-left">
+    <div class="trust-badge">
+      <div class="trust-dot"></div>
+      180 000+ человек перешли к нам в 2026 году
+    </div>
+    <h1>Твой номер.<br>Наша <em>сеть.</em><br><span class="strike">Их цены.</span></h1>
+    <p class="hero-desc">Перейди в activ и сохрани свой номер — бесплатно, всего за&nbsp;5&nbsp;минут онлайн. Подключи безлимит с&nbsp;4G/5G покрытием за 1 тенге.</p>
+
+    <div class="hero-form">
+      <form class="form-row" onsubmit="handleHeroForm(event)">
+        <input class="phone-field" type="tel" placeholder="Ваш номер для переноса" id="hero-phone" autocomplete="tel">
+        <button class="submit-btn" type="submit">Начать перенос</button>
+      </form>
+      <div class="form-micro">
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00C853" stroke-width="2" stroke-linejoin="round"/></svg>
+          Данные защищены
+        </div>
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="rgba(242,242,242,0.38)" stroke-width="2"/><path d="M12 6v6l4 2" stroke="rgba(242,242,242,0.38)" stroke-width="2" stroke-linecap="round"/></svg>
+          Оформление за 5 минут
+        </div>
+        <div class="form-micro-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="rgba(242,242,242,0.38)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Доставка SIM или eSIM
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-social">
+      <div class="avatars">
+        <div class="av a1">АС</div>
+        <div class="av a2">МК</div>
+        <div class="av a3">ДА</div>
+        <div class="av a4">+</div>
+      </div>
+      <div>
+        <div><span class="hs-count">11 млн человек</span> уже с нами</div>
+        <div class="hs-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="float-pill p1">
+      <div class="fp-icon">⚡</div>
+      <div>
+        <div class="fp-text">Активировано</div>
+        <div class="fp-sub">5G подключение</div>
+      </div>
+    </div>
+    <div class="comparison-card">
+      <div class="cc-header">
+        <div class="cc-title">Тариф Безлимит</div>
+        <div class="cc-tag">activ выгоднее</div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Интернет</div>
+        <div class="cc-vals"><div class="cc-new" style="text-align: right">Безлимит</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Внутри сети</div>
+        <div class="cc-vals"><div class="cc-new" style="text-align: right">Безлимит</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">На других</div>
+        <div class="cc-vals"><div class="cc-new" style="text-align: right">200 мин</div></div>
+      </div>
+      <div class="cc-row">
+        <div class="cc-param">Цена/мес</div>
+        <div class="cc-vals"><div class="cc-old">3 990 ₸</div><div class="cc-new">1 ₸</div></div>
+      </div>
+      <div class="cc-footer">
+        <div class="cc-bonus-icon">🎁</div>
+        <div class="cc-bonus-text"><strong>1 тенге за первый месяц</strong><br>и огромные скидки до полугода</div>
+      </div>
+    </div>
+    <div class="float-pill p2">
+      <div class="fp-icon">✅</div>
+      <div>
+        <div class="fp-text">eSIM моментально</div>
+        <div class="fp-sub">или бесплатная доставка</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="proof-bar">
+  <div class="proof-item"><div class="proof-num">11<span class="unit">млн</span></div><div class="proof-label">абонентов в Казахстане</div></div>
+  <div class="proof-item"><div class="proof-num">5<span class="unit"> мин</span></div><div class="proof-label">срок переноса онлайн</div></div>
+  <div class="proof-item"><div class="proof-num">0<span class="unit">₸</span></div><div class="proof-label">стоимость переноса</div></div>
+  <div class="proof-item"><div class="proof-num">98<span class="unit">%</span></div><div class="proof-label">довольных клиентов</div></div>
+</div>
+
+<div class="operators-section reveal">
+  <div class="op-label">Перенесём номер с любого оператора</div>
+  <div class="op-logos">
+    <div class="op-logo"><div class="op-name">Beeline</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Tele2</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+    <div class="op-logo"><div class="op-name">Altel</div><div class="op-arrow">→</div><div class="op-activ" style="color:#fff"><svg role="img" aria-label="activ" viewBox="0 0 372 107.58"><use href="#activ-only"/></svg></div></div>
+  </div>
+</div>
+
+<div class="section-wrap" id="how">
+  <div class="section-head reveal">
+    <div class="chip">Как это работает</div>
+    <h2>Три шага и&nbsp;готово</h2>
+    <p class="sub">Весь процесс проходит онлайн и занимает всего 5 минут.</p>
+  </div>
+  <div class="steps-timeline">
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <div class="step-time">1 минута</div>
+      <h3>Оформите заявку онлайн</h3>
+      <p>Просто введите номер, который хотите перенести. Никуда идти не нужно, оформление происходит прямо на сайте.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> Нужен только удостоверение личности</div>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <div class="step-time">2 минуты</div>
+      <h3>Выберите eSIM или доставку</h3>
+      <p>Активируйте eSIM моментально через QR-код или закажите бесплатную доставку пластиковой SIM-карты курьером.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> Без скрытых условий</div>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <div class="step-time">2 минуты</div>
+      <h3>Наслаждайтесь связью</h3>
+      <p>После активации ваш старый номер автоматически переходит в сеть activ за считанные минуты. Вы ничего не пропустите.</p>
+      <div class="step-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="rgba(0,200,83,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="rgba(0,200,83,0.7)" stroke-width="2"/></svg> SMS уведомление о завершении</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap" id="tariffs">
+  <div class="section-head reveal" style="text-align: center;">
+    <div class="chip">Специальное предложение</div>
+    <h2>Супер-тариф по МНП</h2>
+    <p class="sub" style="margin: 12px auto 0;">Идеальный безлимит для тех, кто переходит в activ со своим номером.</p>
+  </div>
+  
+  <div class="tariffs-grid reveal">
+    <div class="tariff-card featured">
+      <div class="tariff-pop">★ Хит 2026 года</div>
+      <div class="tariff-name">Безлимит</div>
+      <div class="tariff-price"><span class="curr">₸</span>1<span class="per">/за 1-й месяц</span></div>
+      <div class="tariff-old">Стандартная цена: 3 990 ₸/мес</div>
+      
+      <ul class="tariff-features">
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитный интернет</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>Безлимитные звонки внутри сети activ</li>
+        <li><div class="tf-check"><svg width="10" height="10" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="#00C853" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>200 минут на других операторов РК</li>
+      </ul>
+
+      <div class="promo-details">
+        <strong>Оставайтесь дольше — платите меньше:</strong>
+        <div>• <strong>2 и 3 месяц:</strong> скидка 50% (всего 1 995 ₸)</div>
+        <div>• <strong>4, 5 и 6 месяц:</strong> скидка 25% (всего 2 993 ₸)</div>
+      </div>
+
+      <a href="#final-form" class="tariff-cta primary">Перенести номер с этим тарифом →</a>
+    </div>
+  </div>
+</div>
+
+<div class="section-wrap" id="reviews">
+  <div class="section-head reveal">
+    <div class="chip">Отзывы клиентов</div>
+    <h2>Они уже перешли</h2>
+    <p class="sub">Реальные отзывы от людей, которые перенесли номер из других операторов.</p>
+  </div>
+  <div class="reviews-grid reveal">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Перешёл с Tele2. Скептически относился, думал будут проблемы. Но всё прошло онлайн за 5 минут, установил eSIM, номер сохранился. Рекомендую.»</p>
+      <div class="review-author"><div class="rev-av" style="background:#2a1a30">АС</div><div><div class="rev-name">Асет Сейткали</div><div class="rev-from">Перешёл с Tele2 · Алматы</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Поначалу не верила, что всё так просто. Заказала доставку SIM-карты — привезли в тот же день. Перенос прошёл моментально. Тариф за 1 тенге это супер!»</p>
+      <div class="review-author"><div class="rev-av" style="background:#1a2a30">ДМ</div><div><div class="rev-name">Динара Мусина</div><div class="rev-from">Перешла с Beeline · Нур-Султан</div></div></div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Долго откладывал из-за боязни потерять номер, который дал всем. Всё прошло гладко онлайн через eSIM. Скидки на следующие полгода — очень приятный бонус.»</p>
+      <div class="review-author"><div class="rev-av" style="background:#1a2a1a">БЖ</div><div><div class="rev-name">Болат Жаксыбеков</div><div class="rev-from">Перешёл с Altel · Шымкент</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust-row reveal">
+  <div class="trust-item"><div class="trust-icon">🏆</div>Лучший оператор по версии GSMA</div>
+  <div class="trust-item"><div class="trust-icon">🛡️</div>Лицензия МЦРИАП РК</div>
+  <div class="trust-item"><div class="trust-icon">🏅</div>№1 по покрытию 5G</div>
+  <div class="trust-item"><div class="trust-icon">⭐</div>4.8/5 в App Store и Google Play</div>
+  <div class="trust-item"><div class="trust-icon">🔒</div>Данные защищены по GDPR</div>
+</div>
+
+<div class="section-wrap" id="faq">
+  <div class="section-head reveal">
+    <div class="chip">Вопросы и ответы</div>
+    <h2>Всё, что нужно знать</h2>
+  </div>
+  <div class="faq-cols reveal">
+    <div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Сохранится ли мой номер при переходе? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Да. МНП (мобильная переносимость номера) — это законодательно закреплённое право. Ваш номер переходит вместе с вами, меняется только оператор. Все контакты, мессенджеры и банковские привязки остаются.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Нужно ли расторгать договор с текущим оператором? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Нет. При подаче заявки на МНП договор с предыдущим оператором расторгается автоматически. Вам не нужно ничего делать самостоятельно.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Сколько стоит перенос номера? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Перенос номера абсолютно бесплатный. Вы платите только за выбранный тариф (всего 1 тенге в первый месяц). Никаких скрытых комиссий нет.</div>
+      </div>
+    </div>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Буду ли я доступен во время переноса? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Да, перенос занимает всего около 5 минут. С технологией eSIM всё происходит моментально онлайн, а физическую SIM-карту мы доставим бесплатно и активируем без потери связи.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Какие условия для переноса номера? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Необходимо быть физическим лицом с казахстанским номером, без задолженности перед текущим оператором. Номер должен быть оформлен на вас.</div>
+      </div>
+      <div class="faq-item" style="margin-top:12px">
+        <button class="faq-q" onclick="toggleFaq(this)">Что делать, если возникнут проблемы? <span class="faq-ico">+</span></button>
+        <div class="faq-a">Наша служба поддержки работает 24/7. Вы можете просто позвонить нам по номеру 8 701 000 30 30, и мы оперативно решим любой вопрос.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta" id="final-form">
+  <div class="final-cta-inner reveal">
+    <div class="final-cta-left">
+      <div class="chip">Оставить заявку</div>
+      <h2>Перенеси номер сегодня</h2>
+      <p class="sub">Укажи номер, который хочешь перенести, и оформи всё онлайн прямо сейчас.</p>
+      <div id="final-form-wrap">
+        <form class="big-form" onsubmit="handleFinalForm(event)">
+          <input class="big-input" type="tel" id="final-phone" placeholder="+7 700 000 00 00" autocomplete="tel">
+          <input class="big-input" type="text" id="final-name" placeholder="Ваше ИИН или Имя" autocomplete="name">
+          <button class="big-btn" type="submit">Перенести номер бесплатно →</button>
+          <p class="cta-consent">Нажимая кнопку, вы соглашаетесь с <a href="#">условиями обработки персональных данных</a>.</p>
+        </form>
+      </div>
+      <div class="success-msg" id="success-msg">
+        <span class="success-icon">📱</span>
+        <h3>Отлично!</h3>
+        <p>Перенаправляем вас на портал оформления eSIM или заказа доставки SIM-карты...</p>
+      </div>
+    </div>
+    <div class="final-cta-right">
+      <div class="cta-feature"><div class="cf-icon">🆓</div><div class="cf-text"><h4>Перенос бесплатно</h4><p>Никаких комиссий и скрытых платежей за перенос</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">⚡</div><div class="cf-text"><h4>Онлайн оформление</h4><p>Весь процесс автоматизирован и занимает 5 минут</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">🎁</div><div class="cf-text"><h4>Первый месяц за 1 тенге</h4><p>И персональные скидки до полугода на тариф</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">📱</div><div class="cf-text"><h4>eSIM или доставка</h4><p>Моментальная авто-установка или привезём на дом</p></div></div>
+      <div class="cta-feature"><div class="cf-icon">🛡️</div><div class="cf-text"><h4>Номер остаётся вашим</h4><p>Гарантия МНП — ваши контакты сохраняются</p></div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="logo logo-sm" href="#" aria-label="activ 5G" style="color:#fff">
+    <svg role="img" aria-label="activ 5G" viewBox="0 0 494.74 107.58"><use href="#activ-5g-full"/></svg>
+  </a>
+  <div class="footer-links">
+    <a href="#">Условия МНП</a>
+    <a href="#">Тарифы</a>
+    <a href="#">Офисы</a>
+    <a href="#">Поддержка</a>
+    <a href="#">Политика конфиденциальности</a>
+  </div>
+  <div style="font-size:13px;color:var(--text3)">© 2026 activ · <a href="tel:+77010003030" style="color:inherit; text-decoration:none;">8 701 000 30 30</a></div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#final-form">Перенести номер бесплатно →</a>
+</div>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function formatPhone(input) {
+  input.addEventListener('input', function() {
+    let v = this.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (v.startsWith('7') && v.length > 1) {
+      let p = '+7';
+      if (v.length > 1) p += ' ' + v.slice(1, 4);
+      if (v.length > 4) p += ' ' + v.slice(4, 7);
+      if (v.length > 7) p += ' ' + v.slice(7, 9);
+      if (v.length > 9) p += ' ' + v.slice(9, 11);
+      this.value = p;
+    }
+  });
+}
+formatPhone(document.getElementById('hero-phone'));
+formatPhone(document.getElementById('final-phone'));
+
+function handleHeroForm(e) {
+  e.preventDefault();
+  const phone = document.getElementById('hero-phone').value;
+  if (phone.replace(/\D/g,'').length < 11) {
+    document.querySelector('.form-row').style.borderColor = 'rgba(232,0,60,0.6)';
+    return;
+  }
+  // Имитируем переход к форме оформления без звонка
+  const finalFormWrap = document.getElementById('final-form-wrap');
+  const successMsg = document.getElementById('success-msg');
+  
+  // Прокручиваем к финальной форме и показываем "успех/перенаправление"
+  document.getElementById('final-form').scrollIntoView({behavior: 'smooth'});
+  finalFormWrap.style.display = 'none';
+  successMsg.classList.add('show');
+}
+
+function handleFinalForm(e) {
+  e.preventDefault();
+  const phone = document.getElementById('final-phone').value;
+  if (phone.replace(/\D/g,'').length < 11) {
+    document.getElementById('final-phone').style.borderColor = 'rgba(232,0,60,0.6)';
+    return;
+  }
+  document.getElementById('final-form-wrap').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+}
+
+const finalFormEl = document.getElementById('final-form');
+const stickyEl = document.getElementById('sticky-cta');
+const stickyObs = new IntersectionObserver(entries => {
+  stickyEl.style.display = entries[0].isIntersecting ? 'none' : 'block';
+}, { threshold: 0.2 });
+stickyObs.observe(finalFormEl);
+
+function animateCounters() {
+  document.querySelectorAll('.proof-num').forEach(el => {
+    const unit = el.querySelector('.unit');
+    const unitText = unit ? unit.outerHTML : '';
+    const raw = el.textContent.replace(/[^\d]/g,'');
+    const target = parseInt(raw);
+    if (isNaN(target)) return;
+    let current = 0;
+    const step = target / 40;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      // Для больших чисел добавляем пробелы (тысячи)
+      const formattedNum = target > 1000 ? Math.round(current).toLocaleString('ru-RU') : Math.round(current);
+      el.innerHTML = formattedNum + unitText;
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+const proofObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateCounters(); proofObs.disconnect(); }
+}, { threshold: 0.5 });
+proofObs.observe(document.querySelector('.proof-bar'));
+</script>
+</body>
+</html>.ticker { background: var(--red); padding: 9px 0; overflow: hidden; position: relative; z-index: 200; }
 .ticker-inner { display: flex; gap: 48px; animation: ticker 28s linear infinite; white-space: nowrap; width: max-content; }
 .ticker-inner span { font-family: var(--fd); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; display: flex; align-items: center; gap: 12px; }
 .ticker-inner span::before { content: '★'; font-size: 10px; }
