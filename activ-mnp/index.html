@@ -167,6 +167,7 @@ h2 { font-family: var(--fd); font-size: clamp(30px, 3.5vw, 52px); font-weight: 9
 .promo-details strong { color: #fff; font-weight: 700; display: block; margin-bottom: 6px; }
 .promo-details div { margin-bottom: 4px; }
 
+/* Стили отзывов закомментированы до внедрения реального бэкенда
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .review { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 28px; }
 .review-stars { color: #FFC107; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
@@ -175,6 +176,7 @@ h2 { font-family: var(--fd); font-size: clamp(30px, 3.5vw, 52px); font-weight: 9
 .rev-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0; }
 .rev-name { font-weight: 600; font-size: 14px; }
 .rev-from { font-size: 12px; color: var(--text3); }
+*/
 
 .trust-row { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 48px 80px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
 .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text3); }
@@ -240,7 +242,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .hero-social { justify-content: center; }
   .proof-bar { padding: 28px 40px; }
   .tariffs-grid { grid-template-columns: 1fr; }
-  .reviews-grid { grid-template-columns: 1fr 1fr; }
+  /* .reviews-grid { grid-template-columns: 1fr 1fr; } */
   .final-cta-inner { grid-template-columns: 1fr; }
   .final-cta-right { border-left: none; border-top: 1px solid var(--border); }
   .faq-cols { grid-template-columns: 1fr; }
@@ -250,13 +252,19 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   nav { padding: 0 20px; }
   .nav-phone { display: none; }
   .hero { padding: 48px 20px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+  h2 { font-size: clamp(28px, 6vw, 36px); }
+  .float-pill { display: none; } 
+  .form-row { padding: 8px 8px 8px 20px; }
+  .phone-field { padding: 14px 0; }
+  .comparison-card { width: 100%; max-width: 340px; }
   .proof-bar { grid-template-columns: repeat(2,1fr); padding: 20px; }
   .proof-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
   .proof-item:nth-child(odd) { border-right: 1px solid var(--border); }
   .proof-item:last-child, .proof-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
   .steps-timeline { grid-template-columns: 1fr; }
   .steps-timeline::before { display: none; }
-  .reviews-grid { grid-template-columns: 1fr; }
+  /* .reviews-grid { grid-template-columns: 1fr; } */
   .op-logos { flex-direction: column; }
   .op-logo { border-right: none; border-bottom: 1px solid var(--border); }
   .op-logo:last-child { border-bottom: none; }
@@ -266,7 +274,10 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   footer { padding: 32px 20px; flex-direction: column; align-items: center; text-align: center; }
   .sticky-cta { display: block; }
   body { padding-bottom: 80px; }
-  .comparison-card { width: 300px; }
+}
+
+@media (max-height: 600px) and (max-width: 768px) {
+  .sticky-cta { display: none !important; }
 }
 
 /* SVG-defs */
@@ -487,31 +498,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   </div>
 </div>
 
-<div class="section-wrap" id="reviews">
-  <div class="section-head reveal">
-    <div class="chip">Отзывы клиентов</div>
-    <h2>Они уже перешли</h2>
-    <p class="sub">Реальные отзывы от людей, которые перенесли номер из других операторов.</p>
-  </div>
-  <div class="reviews-grid reveal">
-    <div class="review">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">«Перешёл с Tele2. Скептически относился, думал будут проблемы. Но всё прошло онлайн за 5 минут, установил eSIM, номер сохранился. Рекомендую.»</p>
-      <div class="review-author"><div class="rev-av" style="background:#2a1a30">АС</div><div><div class="rev-name">Асет Сейткали</div><div class="rev-from">Перешёл с Tele2 · Алматы</div></div></div>
-    </div>
-    <div class="review">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">«Поначалу не верила, что всё так просто. Заказала доставку SIM-карты — привезли в тот же день. Перенос прошёл моментально. Тариф за 1 тенге это супер!»</p>
-      <div class="review-author"><div class="rev-av" style="background:#1a2a30">ДМ</div><div><div class="rev-name">Динара Мусина</div><div class="rev-from">Перешла с Beeline · Нур-Султан</div></div></div>
-    </div>
-    <div class="review">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">«Долго откладывал из-за боязни потерять номер, который дал всем. Всё прошло гладко онлайн через eSIM. Скидки на следующие полгода — очень приятный бонус.»</p>
-      <div class="review-author"><div class="rev-av" style="background:#1a2a1a">БЖ</div><div><div class="rev-name">Болат Жаксыбеков</div><div class="rev-from">Перешёл с Altel · Шымкент</div></div></div>
-    </div>
-  </div>
-</div>
-
 <div class="trust-row reveal">
   <div class="trust-item"><div class="trust-icon">🏆</div>Лучший оператор по версии GSMA</div>
   <div class="trust-item"><div class="trust-icon">🛡️</div>Лицензия МЦРИАП РК</div>
@@ -547,7 +533,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       </div>
       <div class="faq-item" style="margin-top:12px">
         <button class="faq-q" onclick="toggleFaq(this)">Какие условия для переноса номера? <span class="faq-ico">+</span></button>
-        <div class="faq-a">Необходимо быть физическим лицом с казахстанским номером, без задолженности перед текущим оператором. Номер должен быть оформлен на вас.</div>
+        <div class="faq-a">Необходимо быть физическим лицом с казахстанским номером, без задолженности перед текущим оператором. Номер должен быть оформлен на вас. Также с момента последней смены оператора должно пройти не менее 60 дней.</div>
       </div>
       <div class="faq-item" style="margin-top:12px">
         <button class="faq-q" onclick="toggleFaq(this)">Что делать, если возникнут проблемы? <span class="faq-ico">+</span></button>
@@ -566,7 +552,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       <div id="final-form-wrap">
         <form class="big-form" onsubmit="handleFinalForm(event)">
           <input class="big-input" type="tel" id="final-phone" placeholder="+7 700 000 00 00" autocomplete="tel">
-          <input class="big-input" type="text" id="final-name" placeholder="Ваше ИИН или Имя" autocomplete="name">
+          <input class="big-input" type="text" id="final-name" placeholder="Ваш ИИН или Имя" autocomplete="name">
           <button class="big-btn" type="submit">Перенести номер бесплатно →</button>
           <p class="cta-consent">Нажимая кнопку, вы соглашаетесь с <a href="#">условиями обработки персональных данных</a>.</p>
         </form>
@@ -635,21 +621,28 @@ function formatPhone(input) {
 formatPhone(document.getElementById('hero-phone'));
 formatPhone(document.getElementById('final-phone'));
 
+// Исправленная логика Hero-формы
 function handleHeroForm(e) {
   e.preventDefault();
-  const phone = document.getElementById('hero-phone').value;
+  const phoneInput = document.getElementById('hero-phone');
+  const phone = phoneInput.value;
+  
   if (phone.replace(/\D/g,'').length < 11) {
     document.querySelector('.form-row').style.borderColor = 'rgba(232,0,60,0.6)';
     return;
   }
-  // Имитируем переход к форме оформления без звонка
-  const finalFormWrap = document.getElementById('final-form-wrap');
-  const successMsg = document.getElementById('success-msg');
   
-  // Прокручиваем к финальной форме и показываем "успех/перенаправление"
+  // Переносим номер в финальную форму
+  const finalPhoneInput = document.getElementById('final-phone');
+  finalPhoneInput.value = phone;
+  
+  // Плавный скролл к финальной форме
   document.getElementById('final-form').scrollIntoView({behavior: 'smooth'});
-  finalFormWrap.style.display = 'none';
-  successMsg.classList.add('show');
+  
+  // Ставим фокус на поле ИИН, чтобы продолжить CJM
+  setTimeout(() => {
+    document.getElementById('final-name').focus();
+  }, 500);
 }
 
 function handleFinalForm(e) {
@@ -681,7 +674,6 @@ function animateCounters() {
     const step = target / 40;
     const timer = setInterval(() => {
       current = Math.min(current + step, target);
-      // Для больших чисел добавляем пробелы (тысячи)
       const formattedNum = target > 1000 ? Math.round(current).toLocaleString('ru-RU') : Math.round(current);
       el.innerHTML = formattedNum + unitText;
       if (current >= target) clearInterval(timer);
